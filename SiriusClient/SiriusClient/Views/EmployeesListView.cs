@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace SiriusClient.Views
 {
     public partial class EmployeesListView : UserControl, IEmployeesListView
     {
-        String _Header = "Список сотрудников";
+        #region Header
+        String _Header = GetResourceString("View.Header");
 
         public String Header
         {
@@ -27,6 +29,13 @@ namespace SiriusClient.Views
                 OnPropertyChanged("Header");
             }
         }
+        #endregion Header
+
+        #region ResourceManager
+        static readonly ResourceManager _ResourceManager = new ResourceManager(typeof(EmployeesListView));
+        static ResourceManager GetResourceManager() => _ResourceManager;
+        static String GetResourceString(String name) => GetResourceManager().GetString(name);
+        #endregion ResourceManager
 
         public EmployeesListView()
         {
