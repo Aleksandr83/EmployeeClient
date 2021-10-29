@@ -1,4 +1,4 @@
-﻿namespace SiriusClient.src.Controls
+﻿namespace SiriusClient.Controls
 {
     partial class ToolBarControl
     {

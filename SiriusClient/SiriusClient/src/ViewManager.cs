@@ -17,30 +17,29 @@ namespace SiriusClient
         public static void RegistredAll()
         {
             RegistredViews();
-            BuildServiceProvider();
+            BuildServiceProvider();           
         }
 
         private static void RegistredViews()
-        {
-            var services = GetServices();
-            services.AddSingleton<IEmployeesListView>(new EmployeesListView());
-            services.AddSingleton<IReportView>(new ReportView());
+        {           
+            AddSingleton<IEmployeesListView>(new EmployeesListView());
+            AddSingleton<IReportView>(new ReportView());            
         }
 
         public static IView GetView<T>()
-        {            
+        {          
             return (IView)GetServiceProvider().GetService<T>();          
         }
-
-        public static void HideAll()
+        
+        public static void HideAll<T>() where T : IView
         {
-            var views = GetServiceProvider().GetServices<IView>();
+            var views = GetAll<T>();
             foreach (var view in views) view.Hide();
         }
 
-        public static void ShowAll()
+        public static void ShowAll<T>() where T : IView
         {
-            var views = GetServiceProvider().GetServices<IView>();
+            var views = GetAll<T>();
             foreach (var view in views) view.Show();
         }
     }

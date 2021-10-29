@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using Microsoft.Extensions.DependencyInjection;
+using SiriusClient.Controls;
 using SiriusClient.Services;
+using SiriusClient.Services.DockManager;
 using SiriusClient.Services.Settings;
 using System;
 using System.Collections.Generic;
@@ -15,13 +17,13 @@ namespace SiriusClient
         public static void RegistredAll()
         {            
             RegistredServices();
-            BuildServiceProvider();
+            BuildServiceProvider();            
         }
        
         private static void RegistredServices()
         {
-            var services = GetServices();
-            services.AddSingleton<ISettingsService>(new SettingsService());
+            AddSingleton<ISettingsService>(new SettingsService());
+            AddSingleton<IDockManagerService>(new DockManagerControl());                       
         }
         
         public static IService GetService<T>()

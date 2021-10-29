@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SiriusClient.Views.Interfaces
 {
-    internal interface IEmployeesListView: INormalView
+    internal interface ISettingsView : IView
     {
     }
 }

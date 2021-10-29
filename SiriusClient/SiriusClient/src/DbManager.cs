@@ -1,4 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using SiriusClient.Services.Views;
+using SiriusClient.Views.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +18,15 @@ namespace SiriusClient
         {
             if (IsConnected())
             {
-                ViewManager.ShowAll();
-            }
+                ViewManager.ShowAll<INormalView>();
+                ViewManager.HideAll<ISettingsView>();
+            }            
         }
 
         public static void Disconnected()
         {
-            ViewManager.HideAll();
+            ViewManager.ShowAll<ISettingsView>();
+            ViewManager.HideAll<INormalView>();
         }
     }
 }

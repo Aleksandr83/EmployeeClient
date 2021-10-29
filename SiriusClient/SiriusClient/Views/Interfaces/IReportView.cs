@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SiriusClient.Views.Interfaces
 {
-    internal interface IReportView:IView
+    internal interface IReportView : INormalView
     {
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolBarControl1 = new SiriusClient.src.Controls.ToolBarControl();
-            this.dockManagerControl1 = new SiriusClient.src.Controls.DockManagerControl();
+            this.toolBarControl1 = new SiriusClient.Controls.ToolBarControl();
+            this.dockManagerPresenter1 = new SiriusClient.Controls.DockManagerPresenter();
             this.SuspendLayout();
             // 
             // toolBarControl1
@@ -40,20 +40,20 @@
             this.toolBarControl1.Size = new System.Drawing.Size(1130, 31);
             this.toolBarControl1.TabIndex = 0;
             // 
-            // dockManagerControl1
+            // dockManagerPresenter1
             // 
-            this.dockManagerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockManagerControl1.Location = new System.Drawing.Point(0, 31);
-            this.dockManagerControl1.Name = "dockManagerControl1";
-            this.dockManagerControl1.Size = new System.Drawing.Size(1130, 461);
-            this.dockManagerControl1.TabIndex = 1;
+            this.dockManagerPresenter1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockManagerPresenter1.Location = new System.Drawing.Point(0, 31);
+            this.dockManagerPresenter1.Name = "dockManagerPresenter1";
+            this.dockManagerPresenter1.Size = new System.Drawing.Size(1130, 461);
+            this.dockManagerPresenter1.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1130, 492);
-            this.Controls.Add(this.dockManagerControl1);
+            this.Controls.Add(this.dockManagerPresenter1);
             this.Controls.Add(this.toolBarControl1);
             this.Name = "MainForm";
             this.Text = "SiriusClient";
@@ -63,8 +63,8 @@
 
         #endregion
 
-        private src.Controls.ToolBarControl toolBarControl1;
-        private src.Controls.DockManagerControl dockManagerControl1;
+        private Controls.ToolBarControl toolBarControl1;
+        private Controls.DockManagerPresenter dockManagerPresenter1;
     }
 }
 

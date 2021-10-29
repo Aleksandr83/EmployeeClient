@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SiriusClient.Services.Views
 {
-    internal interface IView
+    public interface IView
     {
+        String Header { get; }
         void Hide();
         void Show();
         void Update();

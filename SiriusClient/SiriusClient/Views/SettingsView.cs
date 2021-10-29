@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SiriusClient.Controls
+namespace SiriusClient.Views
 {
-    public partial class ToolBarControl : UserControl
+    public partial class SettingsView : UserControl
     {
-        public ToolBarControl()
+        public SettingsView()
         {
             InitializeComponent();
         }

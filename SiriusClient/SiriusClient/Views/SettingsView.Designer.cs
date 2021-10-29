@@ -1,6 +1,6 @@
-﻿namespace SiriusClient.Controls
+﻿namespace SiriusClient.Views
 {
-    partial class DockManagerControl
+    partial class SettingsView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,31 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.SuspendLayout();
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(708, 469);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // DockManagerControl
+            // SettingsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
-            this.Name = "DockManagerControl";
-            this.Size = new System.Drawing.Size(708, 469);
+            this.Name = "SettingsView";
+            this.Size = new System.Drawing.Size(862, 504);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
     }
 }
