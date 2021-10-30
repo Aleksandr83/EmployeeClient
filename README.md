@@ -1,4 +1,5 @@
 # sirius
-test 
+This project is a test task
+Description of the task in the file /task/task.doc
 
-yet is used for charts (version 3.21.1)
+yEd is used for charts (version 3.21.1)
