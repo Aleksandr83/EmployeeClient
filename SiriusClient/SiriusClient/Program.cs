@@ -34,10 +34,9 @@ namespace SiriusClient
 
         static void InitConfiguration()
         {
-            var appService = (IAppService)ServicesManager
-                .GetService<IAppService>();
-            appService.CreateConfigurationDataDir();
-            appService.CreateConfigurationFile();
+            (ServicesManager
+                .GetService<IAppService>() as IAppService)?
+                .InitConfiguration();            
         }
         
         static void AttachViewsInDockManager()

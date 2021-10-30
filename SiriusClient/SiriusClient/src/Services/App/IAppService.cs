@@ -15,8 +15,11 @@ namespace SiriusClient.Services.App
         String GetConfigurationDataDir();        
         bool   IsExistConfigurationDataDir();
         void   CreateConfigurationDataDir();
+        String GetConfigurationFileName();
         String GetConfigurationFile();
         bool   IsExistConfigurationFile();
         void   CreateConfigurationFile();
+        void   InitConfiguration();
+        dynamic GetConfiguration();
     }
 }

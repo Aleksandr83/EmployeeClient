@@ -1,4 +1,7 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +16,9 @@ namespace SiriusClient.Services.App
     internal class AppService : IAppService
     {
         private const String CONFIG_FILE_NAME = "config.json";
-                
+
+        IConfigurationRoot _Configuration;
+
         public String GetAppId()
         {
             String appId = "";
@@ -54,6 +59,9 @@ namespace SiriusClient.Services.App
             if (!IsExistConfigurationDataDir())
                 Directory.CreateDirectory(GetConfigurationDataDir());
         }
+
+        public String GetConfigurationFileName() => CONFIG_FILE_NAME;
+
         public String GetConfigurationFile()
         {
             String configFile;
@@ -73,7 +81,135 @@ namespace SiriusClient.Services.App
         public void CreateConfigurationFile()
         {
             if (!IsExistConfigurationFile())
-                File.Create(GetConfigurationFile());
+            {                
+                var jsonObj  = new SettingsClass();
+                var jsonText = JsonConvert.SerializeObject(jsonObj, Formatting.None);
+                File.WriteAllText(GetConfigurationFile(), jsonText);
+            }
+        }
+
+        public void InitConfiguration()
+        {
+            CreateConfigurationDataDir();
+            CreateConfigurationFile();
+            _Configuration = (IConfigurationRoot)new ConfigurationBuilder()?
+                .SetBasePath(GetConfigurationDataDir())?               
+                .Add<WritableJsonConfigurationSource>
+                    (
+                        (Action<WritableJsonConfigurationSource>)( s => 
+                        {
+                            s.FileProvider   = null;
+                            s.Path           = GetConfigurationFileName();
+                            s.Optional       = false;
+                            s.ReloadOnChange = true;
+                            s.ResolveFileProvider();
+                        })
+                    )
+                .Build();
+        }
+
+        public dynamic GetConfiguration() => _Configuration;
+
+        private class WritableJsonConfigurationSource : JsonConfigurationSource
+        {
+            public override IConfigurationProvider Build(IConfigurationBuilder builder)
+            {
+                this.EnsureDefaults(builder);
+                return (IConfigurationProvider)new WritableJsonConfigurationProvider(this);
+            }
+        }
+
+        private class WritableJsonConfigurationProvider : JsonConfigurationProvider
+        {
+            public WritableJsonConfigurationProvider(JsonConfigurationSource source)
+                : base(source)
+            {
+            }
+
+            public override void Set(string key, string value)
+            {
+                //base.Set(key, value);
+                
+                var fileFullPath = base.Source.FileProvider.GetFileInfo(base.Source.Path).PhysicalPath;
+                String json = File.ReadAllText(fileFullPath);
+                var sectionName   = key.Split(':')?.First()?.Trim();
+                var parameterName = key.Split(':')?.Last()?.Trim();
+                var settings = JsonConvert.DeserializeObject<SettingsClass>(json);
+                SectionBlock section = settings.GetSectionByName(sectionName);
+                if (section == null)                
+                    section = settings.Add(new SectionBlock() { Section = sectionName });
+                section.SetValue(parameterName, value);                
+                string output = JsonConvert.SerializeObject(settings, Formatting.Indented);
+                File.WriteAllText(fileFullPath, output);
+            }
+
+        }
+
+        private class SettingsClass
+        {
+            public List<SectionBlock> Settings { get; set; } = new List<SectionBlock>();
+
+            public SectionBlock GetSectionByName(String sectionName)
+            {                 
+                foreach (var section in Settings)
+                {
+                    if (section.Section == sectionName)                    
+                        return section;                   
+                }
+                return null;
+            }
+
+            public SectionBlock Add(SectionBlock section)
+            { 
+                Settings.Add(section);
+                return section;
+            }
+        }
+
+        private class SectionBlock
+        {
+            public string Section { get; set; }           
+
+            public List<SectionValue> Values { get; private set; }
+                    = new List<SectionValue>();
+
+            public void SetValue(String key, String value)
+            {
+                foreach(var item in Values)
+                {
+                    if (item.GetKey() == key)
+                        Values.Remove(item);
+                }                
+                Values.Add(new SectionValue(key, value));
+            }
+        }
+
+        private class SectionValue
+        {           
+            public String[] Value = new String[2]{ "", "" };
+    
+            public SectionValue()
+            {
+            }
+
+            public SectionValue(String key,String value)
+            {
+                SetKey(key);
+                SetValue(value);
+            }
+
+            public String GetKey() => Value.First();
+            public void SetKey(String key)
+            {
+                Value[0] = key;
+            }
+
+            public String GetValue() => Value.Last();
+            public void SetValue(String value)
+            {
+                Value[1] = value;
+            }
+
         }
     }
 }
