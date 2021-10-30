@@ -1,5 +1,7 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using SiriusClient.Configuration;
 using SiriusClient.Helpers;
+using SiriusClient.Services.Settings;
 using SiriusClient.Views.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,89 @@ namespace SiriusClient.Views
         {
             InitializeComponent();
             ResourcesManagerHelper.UpdateControlsHeaders(this, new Func<string, string>((x) => { return GetResourceString(x); }));
+            LoadFormFieldsOnStartup();
+        }
+
+        void LoadFormFieldsOnStartup()
+        {
+            String s;
+            String parameterName;
+            String settingsSection;            
+            var settingsService = (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
+            parameterName   = SettingsNames.SETTINGS_DB_SERVER;
+            s = settingsService.GetStringValue(settingsSection, parameterName, "localhost");
+            SetFieldServerName(s);
+            parameterName   = SettingsNames.SETTINGS_DB_DATABASE; 
+            s = settingsService.GetStringValue(settingsSection, parameterName);
+            SetFieldDatabase(s);
+            parameterName   = SettingsNames.SETTINGS_DB_LOGIN;
+            s = settingsService.GetStringValue(settingsSection, parameterName, "sa");
+            SetFieldLogin(s);
+
+
+            parameterName   = SettingsNames.SETTINGS_DB_PASSWORD;
+            s = settingsService.GetStringValue(settingsSection, parameterName);
+            SetFieldPassword(s);
+        }
+
+        void SaveFormFields()
+        {         
+            String parameterName;
+            String settingsSection;
+            var settingsService = (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
+            parameterName = SettingsNames.SETTINGS_DB_SERVER;           
+            settingsService.SetStringValue(settingsSection, parameterName, GetFieldServerName());
+            parameterName = SettingsNames.SETTINGS_DB_DATABASE;        
+            settingsService.SetStringValue(settingsSection, parameterName, GetFieldDatabase());
+            parameterName = SettingsNames.SETTINGS_DB_LOGIN;      
+            settingsService.SetStringValue(settingsSection, parameterName, GetFieldLogin());
+            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
+            settingsService.SetPasswordValue(settingsSection, parameterName, GetFieldPassword());
+        }
+
+        void ResetPassword()
+        {
+            String parameterName;
+            String settingsSection;
+            var settingsService = (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
+            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
+            settingsService.SetPasswordValue(settingsSection, parameterName);
+        }
+
+        String GetFieldServerName() => Field_ServerName.Text;
+        void SetFieldServerName(String serverName)
+        {
+            Field_ServerName.Text = serverName;
+        }
+
+        String GetFieldDatabase() => Field_Database.Text;
+        void SetFieldDatabase(String database)
+        {
+            Field_Database.Text = database;
+        }
+
+        String GetFieldLogin() => Field_Login.Text;
+        void SetFieldLogin(String login)
+        {
+            Field_Login.Text = login;
+        }
+
+        String GetFieldPassword() => Field_Password.Text;
+        void SetFieldPassword(String password)
+        {
+            Field_Password.Text = password;
+        }
+              
+        bool GetFieldIsSavePassword() => Field_IsSavePassword.Checked;
+        void SetFieldIsSavePassword(bool value)
+        {
+            Field_IsSavePassword.Checked = value;
         }
 
         #region PropertyChanged
@@ -51,5 +136,17 @@ namespace SiriusClient.Views
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
         #endregion PropertyChanged
+
+        private void ConnectionButton_Click(object sender, EventArgs e)
+        {
+            SaveFormFields();
+            // connect to database
+
+        }
+
+        private void ResetPasswordButton_Click(object sender, EventArgs e)
+        {
+            ResetPassword();
+        }
     }
 }

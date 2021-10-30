@@ -1,8 +1,10 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using SiriusClient.Services.App;
 using SiriusClient.Services.DockManager;
 using SiriusClient.Services.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,12 +25,21 @@ namespace SiriusClient
         static void Init()
         {
             ServicesManager.RegistredAll();
+            InitConfiguration();
             ViewManager.RegistredAll();
             //DbManager.Disconnected();
             DbManager.Connected(); // temp
             AttachViewsInDockManager();
         }
 
+        static void InitConfiguration()
+        {
+            var appService = (IAppService)ServicesManager
+                .GetService<IAppService>();
+            appService.CreateConfigurationDataDir();
+            appService.CreateConfigurationFile();
+        }
+        
         static void AttachViewsInDockManager()
         {
             var views = ViewManager.GetAll<IView>();

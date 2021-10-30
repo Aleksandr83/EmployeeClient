@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SiriusClient.Controls;
 using SiriusClient.Services;
+using SiriusClient.Services.App;
 using SiriusClient.Services.DockManager;
 using SiriusClient.Services.Settings;
 using System;
@@ -22,6 +23,7 @@ namespace SiriusClient
        
         private static void RegistredServices()
         {
+            AddSingleton<IAppService>(new AppService());
             AddSingleton<ISettingsService>(new SettingsService());
             AddSingleton<IDockManagerService>(new DockManagerControl());                       
         }

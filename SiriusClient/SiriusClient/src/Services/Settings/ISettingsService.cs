@@ -9,7 +9,8 @@ namespace SiriusClient.Services.Settings
 {
     internal interface ISettingsService:IService
     {
-        string GetStringValue(String section, String parameterName,String defaultValue);
-        void   SetStringValue(String section, String parameterName);
+        string GetStringValue(String section, String parameterName,String defaultValue = "");
+        void   SetStringValue(String section, String parameterName,String value = "");       
+        void   SetPasswordValue(String section, String parameterName,String password = "");
     }
 }

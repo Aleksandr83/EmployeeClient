@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="View.Header" xml:space="preserve">
-    <value>Настройка подключения к БД</value>
-  </data>
-  <data name="View.Settings.DB.ConnectionButton" xml:space="preserve">
-    <value>Подключение...</value>
-  </data>
-  <data name="View.Settings.DB.Database" xml:space="preserve">
-    <value>База данных</value>
-  </data>
-  <data name="View.Settings.DB.IsSavePassword" xml:space="preserve">
-    <value>Сохранить пароль</value>
-  </data>
-  <data name="View.Settings.DB.Login" xml:space="preserve">
-    <value>Логин</value>
-  </data>
-  <data name="View.Settings.DB.Password" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="View.Settings.DB.ResetPasswordButton" xml:space="preserve">
-    <value>Сбросить пароль</value>
-  </data>
-  <data name="View.Settings.DB.ServerName" xml:space="preserve">
-    <value>Имя сервера</value>
-  </data>
 </root>

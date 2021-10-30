@@ -15,7 +15,12 @@ namespace SiriusClient.Services.Settings
             return result;
         }
 
-        public void SetStringValue(String section, String parameterName)
+        public void SetStringValue(String section, String parameterName,String value = "")
+        {
+
+        }       
+
+        public void SetPasswordValue(String section, String parameterName, String password = "")
         {
 
         }

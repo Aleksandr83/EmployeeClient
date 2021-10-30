@@ -21,10 +21,11 @@ namespace SiriusClient
         }
 
         private static void RegistredViews()
-        {           
+        {
+            AddSingleton<ISettingsView>(new SettingsView());
             AddSingleton<IEmployeesListView>(new EmployeesListView());
             AddSingleton<IReportView>(new ReportView());
-            AddSingleton<ISettingsView>(new SettingsView());
+            AddSingleton<IAboutProgramView>(new AboutProgramView());
         }
 
         public static IView GetView<T>()
