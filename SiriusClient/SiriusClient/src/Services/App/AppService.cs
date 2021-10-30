@@ -128,7 +128,7 @@ namespace SiriusClient.Services.App
 
             public override void Set(string key, string value)
             {
-                //base.Set(key, value);
+                base.Set(key, value);
                 
                 var fileFullPath = base.Source.FileProvider.GetFileInfo(base.Source.Path).PhysicalPath;
                 String json = File.ReadAllText(fileFullPath);
@@ -174,11 +174,14 @@ namespace SiriusClient.Services.App
                     = new List<SectionValue>();
 
             public void SetValue(String key, String value)
-            {
+            {                
                 foreach(var item in Values)
                 {
                     if (item.GetKey() == key)
-                        Values.Remove(item);
+                    {
+                        item.SetValue(value);
+                        return;
+                    }
                 }                
                 Values.Add(new SectionValue(key, value));
             }
