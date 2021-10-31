@@ -121,13 +121,16 @@
     <value>Автор</value>
   </data>
   <data name="View.AboutProgram.ConfigurationDir" xml:space="preserve">
-    <value>Конфигурация программы</value>
+    <value>Директория конфигурации программы</value>
   </data>
   <data name="View.AboutProgram.ConfigurationFile" xml:space="preserve">
     <value>Конфигурационный файл</value>
   </data>
   <data name="View.AboutProgram.Copyright" xml:space="preserve">
     <value>Авторские права</value>
+  </data>
+  <data name="View.AboutProgram.Email" xml:space="preserve">
+    <value>e-mail</value>
   </data>
   <data name="View.AboutProgram.FilesAndDirsInfo" xml:space="preserve">
     <value>Файлы и каталоги</value>
@@ -140,6 +143,15 @@
   </data>
   <data name="View.AboutProgram.ProgramName" xml:space="preserve">
     <value>Название </value>
+  </data>
+  <data name="View.AboutProgram.ToolTips.CopyToClipboard" xml:space="preserve">
+    <value>Копировать в буффер обмена</value>
+  </data>
+  <data name="View.AboutProgram.ToolTips.OpenFileInNotepad" xml:space="preserve">
+    <value>Открыть файл в Блокноте</value>
+  </data>
+  <data name="View.AboutProgram.ToolTips.OpenFolderInExplorer" xml:space="preserve">
+    <value>Открыть папку в проводнике</value>
   </data>
   <data name="View.AboutProgram.Version" xml:space="preserve">
     <value>Версия </value>

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration.Json;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -37,6 +38,27 @@ namespace SiriusClient.Services.App
         public String GetAppVersion()
         {
             return Assembly.GetEntryAssembly()?.GetName()?.Version?.ToString();
+        }
+
+        public String GetAuthor()
+        {
+            return "Lukin Aleksandr";
+        }
+
+        public String GetAuthorEmail()
+        {
+            return "lukin.a.g.spb@gmail.com";
+        }
+
+        public String GetLicenseType()
+        {
+            return "GPL-3.0 License";
+        }
+
+        public String GetCopyright()
+        {
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            return versionInfo.LegalCopyright;
         }
 
         public String GetConfigurationDataDir()

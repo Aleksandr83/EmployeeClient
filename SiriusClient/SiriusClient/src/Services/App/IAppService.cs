@@ -12,6 +12,11 @@ namespace SiriusClient.Services.App
         String GetAppId();
         String GetAppName();
         String GetAppVersion();
+        String GetAuthor();
+        String GetAuthorEmail();
+        String GetLicenseType();
+        String GetCopyright();
+
         String GetConfigurationDataDir();        
         bool   IsExistConfigurationDataDir();
         void   CreateConfigurationDataDir();
