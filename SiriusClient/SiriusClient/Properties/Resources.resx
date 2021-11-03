@@ -118,13 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="open_folder_btn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Icons\open_folder_btn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="connection_img_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\connection_img_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="password_img_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\password_img_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="db_img_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\db_img_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login_img_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\login_img_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="copy_btn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Icons\copy_btn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open_folder_btn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\open_folder_btn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_pass_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\reset_pass_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="server_img_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\server_img_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="open_text_file_btn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Assets\Icons\open_text_file_btn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aurorenew_btn_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Assets\Icons\aurorenew_btn_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

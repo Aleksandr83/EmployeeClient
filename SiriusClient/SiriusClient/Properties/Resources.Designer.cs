@@ -63,9 +63,49 @@ namespace SiriusClient.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap aurorenew_btn_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("aurorenew_btn_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap connection_img_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("connection_img_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy_btn_16x16 {
             get {
                 object obj = ResourceManager.GetObject("copy_btn_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap db_img_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("db_img_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login_img_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("login_img_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +126,36 @@ namespace SiriusClient.Properties {
         internal static System.Drawing.Bitmap open_text_file_btn_16x16 {
             get {
                 object obj = ResourceManager.GetObject("open_text_file_btn_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap password_img_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("password_img_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_pass_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("reset_pass_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap server_img_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("server_img_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

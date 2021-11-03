@@ -16,7 +16,6 @@ namespace SiriusClient.Services.App
         String GetAuthorEmail();
         String GetLicenseType();
         String GetCopyright();
-
         String GetConfigurationDataDir();        
         bool   IsExistConfigurationDataDir();
         void   CreateConfigurationDataDir();

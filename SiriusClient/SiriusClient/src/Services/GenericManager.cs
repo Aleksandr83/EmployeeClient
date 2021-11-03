@@ -37,9 +37,10 @@ namespace SiriusClient.Services
             foreach (var value in values)
             {
                 if (value is T)
-                    result.Add((T)value);
+                    result?.Add((T)value);
             }
             return result;
+            
         }
 
         //public static IEnumerable<T> GetAll<T>()

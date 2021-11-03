@@ -1,4 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using SiriusClient.Services.DockManager;
+using SiriusClient.Services.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,14 @@ namespace SiriusClient.Controls
         public ToolBarControl()
         {
             InitializeComponent();
+        }
+
+        private void AutorenewButton_Click(object sender, EventArgs e)
+        {
+            var dockManager = (IDockManagerService)ServicesManager
+                .GetService<IDockManagerService>();
+            var activeView = (IView)dockManager.GetActiveView();
+            activeView?.Update();
         }
     }
 }

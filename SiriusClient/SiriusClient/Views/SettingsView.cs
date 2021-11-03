@@ -43,59 +43,89 @@ namespace SiriusClient.Views
         {
             InitializeComponent();
             ResourcesManagerHelper.UpdateControlsHeaders(this, new Func<string, string>((x) => { return GetResourceString(x); }));
-            LoadFormFieldsOnStartup();
+            SetToolTips();
+            Update(); 
         }
 
-        void LoadFormFieldsOnStartup()
+        private ISettingsService GetSettingsService()
         {
-            String s;
-            String parameterName;
-            String settingsSection;            
-            var settingsService = (ISettingsService)ServicesManager
+            return (ISettingsService)ServicesManager
                 .GetService<ISettingsService>();
+        }
+
+        public new void Update()
+        {
+            base.Update();
+            LoadFormFields();
+            OnClick(new EventArgs());
+        }
+
+        void LoadFormFields()
+        {
+            String  s;
+            String  parameterName;
+            String  settingsSection;
+            dynamic defaultValue = false;
+            var settingsService = GetSettingsService();               
             settingsSection = SettingsSections.SETTINGS_SECTION_DB;
             parameterName   = SettingsNames.SETTINGS_DB_SERVER;
-            s = settingsService.GetStringValue(settingsSection, parameterName, "localhost");
+            s = settingsService?.GetStringValue(settingsSection, parameterName, "localhost");
             SetFieldServerName(s);
             parameterName   = SettingsNames.SETTINGS_DB_DATABASE; 
-            s = settingsService.GetStringValue(settingsSection, parameterName);
+            s = settingsService?.GetStringValue(settingsSection, parameterName);
             SetFieldDatabase(s);
             parameterName   = SettingsNames.SETTINGS_DB_LOGIN;
-            s = settingsService.GetStringValue(settingsSection, parameterName, "sa");
+            s = settingsService?.GetStringValue(settingsSection, parameterName, "sa");
             SetFieldLogin(s);
-
-
-            parameterName   = SettingsNames.SETTINGS_DB_PASSWORD;
-            s = settingsService.GetStringValue(settingsSection, parameterName);
-            SetFieldPassword(s);
+            defaultValue  = false;
+            parameterName = SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;            
+            bool? isSavePassword = settingsService?.GetBoolValue(settingsSection, parameterName);
+            SetFieldIsSavePassword(isSavePassword??defaultValue);            
+            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
+            s = settingsService?.GetStringValue(settingsSection, parameterName);
+            SetFieldPassword(s);            
         }
 
         void SaveFormFields()
         {         
             String parameterName;
             String settingsSection;
-            var settingsService = (ISettingsService)ServicesManager
-                .GetService<ISettingsService>();
+            var settingsService = GetSettingsService();
             settingsSection = SettingsSections.SETTINGS_SECTION_DB;
-            parameterName = SettingsNames.SETTINGS_DB_SERVER;           
-            settingsService.SetStringValue(settingsSection, parameterName, GetFieldServerName());
-            parameterName = SettingsNames.SETTINGS_DB_DATABASE;        
-            settingsService.SetStringValue(settingsSection, parameterName, GetFieldDatabase());
-            parameterName = SettingsNames.SETTINGS_DB_LOGIN;      
-            settingsService.SetStringValue(settingsSection, parameterName, GetFieldLogin());
-            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
-            settingsService.SetPasswordValue(settingsSection, parameterName, GetFieldPassword());
+            parameterName   = SettingsNames.SETTINGS_DB_SERVER;           
+            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldServerName());
+            parameterName   = SettingsNames.SETTINGS_DB_DATABASE;        
+            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldDatabase());
+            parameterName   = SettingsNames.SETTINGS_DB_LOGIN;      
+            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldLogin());
+            var isSavePassword = GetFieldIsSavePassword();
+            parameterName   = SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;
+            settingsService?.SetBoolValue(settingsSection, parameterName, isSavePassword);
+            if (isSavePassword)
+            {
+                parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
+                settingsService?.SetPasswordValue(settingsSection, parameterName, GetFieldPassword());
+            }
+            settingsService?.Save();
         }
 
         void ResetPassword()
         {
             String parameterName;
             String settingsSection;
-            var settingsService = (ISettingsService)ServicesManager
-                .GetService<ISettingsService>();
+            var settingsService = GetSettingsService();
             settingsSection = SettingsSections.SETTINGS_SECTION_DB;
-            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
-            settingsService.SetPasswordValue(settingsSection, parameterName);
+            parameterName   = SettingsNames.SETTINGS_DB_PASSWORD;
+            settingsService?.SetPasswordValue(settingsSection, parameterName);            
+            settingsService?.Save();
+            SetFieldPassword(null);
+        }        
+
+        private void SetToolTips()
+        {
+            String toolTipText;
+            toolTipText = GetResourceString("View.Settings.DB.ResetPasswordButton");
+            this.ResetPassButtonToolTip.SetToolTip(ResetPasswordButton, toolTipText);
         }
 
         String GetFieldServerName() => Field_ServerName.Text;
@@ -137,6 +167,12 @@ namespace SiriusClient.Views
         }
         #endregion PropertyChanged
 
+        protected override void OnClick(EventArgs e)
+        {
+            base.OnClick(e);
+            this.ActiveControl = this.ConnectionButton;
+        }
+
         private void ConnectionButton_Click(object sender, EventArgs e)
         {
             SaveFormFields();
@@ -146,7 +182,7 @@ namespace SiriusClient.Views
 
         private void ResetPasswordButton_Click(object sender, EventArgs e)
         {
-            ResetPassword();
+            ResetPassword();          
         }
     }
 }

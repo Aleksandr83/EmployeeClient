@@ -9,6 +9,8 @@ namespace SiriusClient.Services.DockManager
 {
     internal interface IDockManager
     {
-        void AddView(IView view);
+        IView GetActiveView();
+        void  AddView(IView view);
+        
     }
 }

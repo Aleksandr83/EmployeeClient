@@ -28,15 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.AutorenewButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // AutorenewButton
+            // 
+            this.AutorenewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AutorenewButton.Image = global::SiriusClient.Properties.Resources.aurorenew_btn_32x32;
+            this.AutorenewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AutorenewButton.Name = "AutorenewButton";
+            this.AutorenewButton.Size = new System.Drawing.Size(29, 28);
+            this.AutorenewButton.Click += new System.EventHandler(this.AutorenewButton_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AutorenewButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(764, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(764, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -47,6 +60,8 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "ToolBarControl";
             this.Size = new System.Drawing.Size(764, 38);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -54,6 +69,7 @@
 
         #endregion
 
+        private System.Windows.Forms.ToolStripButton AutorenewButton;
         private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

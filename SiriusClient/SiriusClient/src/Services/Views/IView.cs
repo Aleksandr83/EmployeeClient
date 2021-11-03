@@ -12,6 +12,7 @@ namespace SiriusClient.Services.Views
         String Header { get; }
         void Hide();
         void Show();
-        void Update();
+        void Update();        
+        
     }
 }

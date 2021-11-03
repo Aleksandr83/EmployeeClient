@@ -230,7 +230,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(263, 120);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(146, 16);
-            this.linkLabel1.TabIndex = 20;
+            this.linkLabel1.TabIndex = 2;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "%!ProgramAuthorEmail";
             // 
@@ -251,7 +251,7 @@
             this.OpenConfigFileButton.Location = new System.Drawing.Point(17, 249);
             this.OpenConfigFileButton.Name = "OpenConfigFileButton";
             this.OpenConfigFileButton.Size = new System.Drawing.Size(22, 22);
-            this.OpenConfigFileButton.TabIndex = 24;
+            this.OpenConfigFileButton.TabIndex = 5;
             this.OpenConfigFileButton.UseVisualStyleBackColor = true;
             this.OpenConfigFileButton.Click += new System.EventHandler(this.OpenConfigFileButton_Click);
             // 
@@ -263,7 +263,7 @@
             this.OpenConfigFolderButton.Location = new System.Drawing.Point(17, 225);
             this.OpenConfigFolderButton.Name = "OpenConfigFolderButton";
             this.OpenConfigFolderButton.Size = new System.Drawing.Size(22, 22);
-            this.OpenConfigFolderButton.TabIndex = 23;
+            this.OpenConfigFolderButton.TabIndex = 3;
             this.OpenConfigFolderButton.UseVisualStyleBackColor = true;
             this.OpenConfigFolderButton.Click += new System.EventHandler(this.OpenConfigFolderButton_Click);
             // 
@@ -275,7 +275,7 @@
             this.CopyEmailButton.Location = new System.Drawing.Point(44, 114);
             this.CopyEmailButton.Name = "CopyEmailButton";
             this.CopyEmailButton.Size = new System.Drawing.Size(22, 22);
-            this.CopyEmailButton.TabIndex = 22;
+            this.CopyEmailButton.TabIndex = 1;
             this.CopyEmailButton.UseVisualStyleBackColor = true;
             this.CopyEmailButton.Click += new System.EventHandler(this.CopyEmailButton_Click);
             // 
@@ -287,7 +287,7 @@
             this.CopyConfigFileButton.Location = new System.Drawing.Point(44, 249);
             this.CopyConfigFileButton.Name = "CopyConfigFileButton";
             this.CopyConfigFileButton.Size = new System.Drawing.Size(22, 22);
-            this.CopyConfigFileButton.TabIndex = 8;
+            this.CopyConfigFileButton.TabIndex = 6;
             this.CopyConfigFileButton.UseVisualStyleBackColor = true;
             this.CopyConfigFileButton.Click += new System.EventHandler(this.CopyConfigFileButton_Click);
             // 
@@ -299,7 +299,7 @@
             this.CopyConfigDirButton.Location = new System.Drawing.Point(44, 225);
             this.CopyConfigDirButton.Name = "CopyConfigDirButton";
             this.CopyConfigDirButton.Size = new System.Drawing.Size(22, 22);
-            this.CopyConfigDirButton.TabIndex = 7;
+            this.CopyConfigDirButton.TabIndex = 4;
             this.CopyConfigDirButton.UseVisualStyleBackColor = true;
             this.CopyConfigDirButton.Click += new System.EventHandler(this.CopyConfigDirButton_Click);
             // 

@@ -78,11 +78,14 @@
     <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.5.0.0\lib\net461\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.1\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodePort.Wintellect.PowerCollections.1.0.1\lib\netstandard2.0\PowerCollections.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -107,8 +110,8 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -130,11 +133,11 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -188,6 +191,7 @@
     <Compile Include="src\Controls\ToolBarControl.Designer.cs">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Helpers\Base64Helper.cs" />
     <Compile Include="src\Helpers\ResourcesManagerHelper.cs" />
     <Compile Include="src\Repositories\Repository.cs" />
     <Compile Include="src\DbManager.cs" />
@@ -201,6 +205,16 @@
     <Compile Include="src\Services\Settings\ISettingsService.cs" />
     <Compile Include="src\Services\Settings\SettingsService.cs" />
     <Compile Include="src\Services\Views\INormalView.cs" />
+    <Compile Include="src\Types\Configuration\JsonConfiguration.cs" />
+    <Compile Include="src\Types\Configuration\JsonConfigurationFile.cs" />
+    <Compile Include="src\Types\Configuration\IConfiguration.cs" />
+    <Compile Include="src\Types\Configuration\JsonConfigurationFileParser.cs" />
+    <Compile Include="src\Types\Configuration\SectionBlock.cs" />
+    <Compile Include="src\Types\Configuration\SectionValue.cs" />
+    <Compile Include="src\Types\Configuration\JsonSettings.cs" />
+    <Compile Include="src\Types\Configuration\WritableJsonConfigurationProvider.cs" />
+    <Compile Include="src\Types\Configuration\WritableJsonConfigurationSource.cs" />
+    <Compile Include="src\Types\MultiValuesDictionary.cs" />
     <Compile Include="src\ViewManager.cs" />
     <Compile Include="src\Services\Views\IView.cs" />
     <Compile Include="Views\AboutProgramView.cs">
@@ -293,5 +307,15 @@
   <ItemGroup>
     <None Include="Assets\Icons\open_text_file_btn_16x16.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Icons\aurorenew_btn_32x32.png" />
+    <Content Include="Assets\Icons\connection_img_16x16.png" />
+    <Content Include="Assets\Icons\db_img_16x16.png" />
+    <Content Include="Assets\Icons\login_img_16x16.png" />
+    <Content Include="Assets\Icons\server_img_16x16.png" />
+    <None Include="Assets\Icons\password_img_16x16.png" />
+    <Content Include="Assets\Icons\reset_pass_16x16.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

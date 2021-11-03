@@ -30,6 +30,7 @@ namespace SiriusClient.Views
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.Field_ServerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,9 +39,14 @@ namespace SiriusClient.Views
             this.Field_Login = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Field_Password = new System.Windows.Forms.TextBox();
-            this.ConnectionButton = new System.Windows.Forms.Button();
             this.Field_IsSavePassword = new System.Windows.Forms.CheckBox();
+            this.ResetPassButtonToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ServerImage = new System.Windows.Forms.Button();
+            this.DatabaseImage = new System.Windows.Forms.Button();
+            this.PasswordImage = new System.Windows.Forms.Button();
+            this.LoginImage = new System.Windows.Forms.Button();
             this.ResetPasswordButton = new System.Windows.Forms.Button();
+            this.ConnectionButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -108,16 +114,6 @@ namespace SiriusClient.Views
             this.Field_Password.Size = new System.Drawing.Size(294, 22);
             this.Field_Password.TabIndex = 7;
             // 
-            // ConnectionButton
-            // 
-            this.ConnectionButton.Location = new System.Drawing.Point(223, 312);
-            this.ConnectionButton.Name = "ConnectionButton";
-            this.ConnectionButton.Size = new System.Drawing.Size(160, 25);
-            this.ConnectionButton.TabIndex = 8;
-            this.ConnectionButton.Text = "%%View.Settings.DB.ConnectionButton";
-            this.ConnectionButton.UseVisualStyleBackColor = true;
-            this.ConnectionButton.Click += new System.EventHandler(this.ConnectionButton_Click);
-            // 
             // Field_IsSavePassword
             // 
             this.Field_IsSavePassword.AutoSize = true;
@@ -126,24 +122,102 @@ namespace SiriusClient.Views
             this.Field_IsSavePassword.Location = new System.Drawing.Point(90, 269);
             this.Field_IsSavePassword.Name = "Field_IsSavePassword";
             this.Field_IsSavePassword.Size = new System.Drawing.Size(260, 20);
-            this.Field_IsSavePassword.TabIndex = 9;
+            this.Field_IsSavePassword.TabIndex = 8;
             this.Field_IsSavePassword.Text = "%%View.Settings.DB.IsSavePassword";
             this.Field_IsSavePassword.UseVisualStyleBackColor = true;
             // 
+            // ServerImage
+            // 
+            this.ServerImage.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.ServerImage.FlatAppearance.BorderSize = 0;
+            this.ServerImage.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.ServerImage.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.ServerImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ServerImage.Image = global::SiriusClient.Properties.Resources.server_img_16x16;
+            this.ServerImage.Location = new System.Drawing.Point(54, 92);
+            this.ServerImage.Name = "ServerImage";
+            this.ServerImage.Size = new System.Drawing.Size(25, 25);
+            this.ServerImage.TabIndex = 0;
+            this.ServerImage.TabStop = false;
+            this.ServerImage.UseVisualStyleBackColor = true;
+            // 
+            // DatabaseImage
+            // 
+            this.DatabaseImage.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.DatabaseImage.FlatAppearance.BorderSize = 0;
+            this.DatabaseImage.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.DatabaseImage.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.DatabaseImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DatabaseImage.Image = global::SiriusClient.Properties.Resources.db_img_16x16;
+            this.DatabaseImage.Location = new System.Drawing.Point(54, 139);
+            this.DatabaseImage.Name = "DatabaseImage";
+            this.DatabaseImage.Size = new System.Drawing.Size(25, 25);
+            this.DatabaseImage.TabIndex = 0;
+            this.DatabaseImage.TabStop = false;
+            this.DatabaseImage.UseVisualStyleBackColor = true;
+            // 
+            // PasswordImage
+            // 
+            this.PasswordImage.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.PasswordImage.FlatAppearance.BorderSize = 0;
+            this.PasswordImage.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.PasswordImage.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.PasswordImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PasswordImage.Image = global::SiriusClient.Properties.Resources.password_img_16x16;
+            this.PasswordImage.Location = new System.Drawing.Point(54, 238);
+            this.PasswordImage.Name = "PasswordImage";
+            this.PasswordImage.Size = new System.Drawing.Size(25, 25);
+            this.PasswordImage.TabIndex = 0;
+            this.PasswordImage.TabStop = false;
+            this.PasswordImage.UseVisualStyleBackColor = true;
+            // 
+            // LoginImage
+            // 
+            this.LoginImage.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.LoginImage.FlatAppearance.BorderSize = 0;
+            this.LoginImage.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.LoginImage.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.LoginImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginImage.Image = global::SiriusClient.Properties.Resources.login_img_16x16;
+            this.LoginImage.Location = new System.Drawing.Point(54, 190);
+            this.LoginImage.Name = "LoginImage";
+            this.LoginImage.Size = new System.Drawing.Size(25, 25);
+            this.LoginImage.TabIndex = 0;
+            this.LoginImage.TabStop = false;
+            this.LoginImage.UseVisualStyleBackColor = true;
+            // 
             // ResetPasswordButton
             // 
-            this.ResetPasswordButton.Location = new System.Drawing.Point(391, 240);
+            this.ResetPasswordButton.FlatAppearance.BorderSize = 0;
+            this.ResetPasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ResetPasswordButton.Image = global::SiriusClient.Properties.Resources.reset_pass_16x16;
+            this.ResetPasswordButton.Location = new System.Drawing.Point(389, 240);
             this.ResetPasswordButton.Name = "ResetPasswordButton";
-            this.ResetPasswordButton.Size = new System.Drawing.Size(177, 25);
+            this.ResetPasswordButton.Size = new System.Drawing.Size(25, 25);
             this.ResetPasswordButton.TabIndex = 10;
-            this.ResetPasswordButton.Text = "%%View.Settings.DB.ResetPasswordButton";
             this.ResetPasswordButton.UseVisualStyleBackColor = true;
             this.ResetPasswordButton.Click += new System.EventHandler(this.ResetPasswordButton_Click);
+            // 
+            // ConnectionButton
+            // 
+            this.ConnectionButton.Image = global::SiriusClient.Properties.Resources.connection_img_16x16;
+            this.ConnectionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ConnectionButton.Location = new System.Drawing.Point(213, 312);
+            this.ConnectionButton.Name = "ConnectionButton";
+            this.ConnectionButton.Size = new System.Drawing.Size(170, 25);
+            this.ConnectionButton.TabIndex = 9;
+            this.ConnectionButton.Text = "%%View.Settings.DB.ConnectionButton";
+            this.ConnectionButton.UseVisualStyleBackColor = true;
+            this.ConnectionButton.Click += new System.EventHandler(this.ConnectionButton_Click);
             // 
             // SettingsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ServerImage);
+            this.Controls.Add(this.DatabaseImage);
+            this.Controls.Add(this.PasswordImage);
+            this.Controls.Add(this.LoginImage);
             this.Controls.Add(this.ResetPasswordButton);
             this.Controls.Add(this.Field_IsSavePassword);
             this.Controls.Add(this.ConnectionButton);
@@ -175,5 +249,10 @@ namespace SiriusClient.Views
         private System.Windows.Forms.Button ConnectionButton;
         private System.Windows.Forms.CheckBox Field_IsSavePassword;
         private System.Windows.Forms.Button ResetPasswordButton;
+        private System.Windows.Forms.ToolTip ResetPassButtonToolTip;
+        private System.Windows.Forms.Button LoginImage;
+        private System.Windows.Forms.Button PasswordImage;
+        private System.Windows.Forms.Button DatabaseImage;
+        private System.Windows.Forms.Button ServerImage;
     }
 }
