@@ -17,10 +17,19 @@ namespace EmployeeClient.Controls
         public DockManagerPresenter()
         {
             InitializeComponent();
-            AddDockManagerControl();
+            Init();            
         }
 
-        void AddDockManagerControl()
+        protected virtual void Init()
+        {
+            new Task<int>(new Func<int>(() =>
+            {
+                AddDockManagerControl();
+                return 0;
+            })).Start(); ;           
+        }
+
+        public void AddDockManagerControl()
         {
             var dockManager  = (UserControl)GetDockManagerControl();
             dockManager.Dock = DockStyle.Fill;

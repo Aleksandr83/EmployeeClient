@@ -1,5 +1,4 @@
-﻿// Copyright (c) 2021 Lukin Aleksandr
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EmployeeClient
+namespace EmployeeClient.Controls
 {
-    public partial class MainForm : Form
+    public partial class DataGridViewControl : UserControl
     {
-       
-        public MainForm()
+        public DataGridViewControl()
         {
-            InitializeComponent();          
+            InitializeComponent();
         }
-        
     }
 }

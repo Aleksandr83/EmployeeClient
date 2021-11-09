@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Repositories
 {
-    internal class Repository<T>:
-        GenericRepository<T> where T : class
+    public enum TRefferRepositoryType
     {
-        protected override String GetConnectionString()
-        {
-            return "";
-        }
+        SinglePrimaryDatabase
     }
 }

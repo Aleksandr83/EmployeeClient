@@ -52,7 +52,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 492);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.ClientSize  = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.dockManagerPresenter1);
             this.Controls.Add(this.toolBarControl1);
             this.Name = "MainForm";

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Services.Views;
+//using EmployeeClient.Services.Views;
+using EmployeeClient.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace EmployeeClient.Helpers
 
         public static void UpdateControlsHeaders
             (
-                IView view,
+                IUserControl view,
                 Func<String, String> resourceReaderMethod,
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
@@ -37,7 +38,7 @@ namespace EmployeeClient.Helpers
 
         public static void UpdateControlsValues
             (
-                IView view,
+                IUserControl view,
                 Func<String, String> resourceReaderMethod,
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
@@ -53,7 +54,7 @@ namespace EmployeeClient.Helpers
 
         private static void UpdateControls
             (
-                IView view, 
+                IUserControl view, 
                 Func<String,String> resourceReaderMethod,
                 String prefix,
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text

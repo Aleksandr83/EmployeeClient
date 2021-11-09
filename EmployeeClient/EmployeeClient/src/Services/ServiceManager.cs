@@ -29,8 +29,10 @@ namespace EmployeeClient
         }
         
         public static IService GetService<T>()
-        {            
-            return (IService)GetServiceProvider().GetService<T>();
+        {
+            IService result = null;           
+            result = (IService)GetServiceProvider().GetService<T>();            
+            return result;
         }
 
     }
