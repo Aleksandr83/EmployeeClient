@@ -51,16 +51,16 @@ CREATE PROCEDURE [dbo].[uspGetPersons]
 AS
 	SET NOCOUNT OFF;
 	SELECT
-		a.last_name + ' ' + LEFT(first_name,1) + '.' + LEFT(second_name,1) + '.' AS fio,
-		b.name AS status,
-		c.name AS dep,
-		d.name AS post,
-		date_employ  AS date_employ,
-		date_uneploy AS date_uneploy
-	FROM dbo.persons a
-	  INNER JOIN dbo.status b ON a.status  = b.id
-	  INNER JOIN dbo.deps   c ON a.id_dep  = c.id
-	  INNER JOIN dbo.posts  d ON a.id_post = d.id	
+		tablePersons.last_name + ' ' + LEFT(tablePersons.first_name,1) + '.' + LEFT(tablePersons.second_name,1) + '.' AS fio,
+		tableStatus.name AS status,
+		tableDeps.name   AS dep,
+		tablePosts.name  AS post,
+		date_employ		 AS date_employ,
+		date_uneploy	 AS date_uneploy
+	FROM dbo.persons tablePersons
+	  INNER JOIN dbo.status tableStatus ON tablePersons.status  = tableStatus.id
+	  INNER JOIN dbo.deps   tableDeps	ON tablePersons.id_dep  = tableDeps.id
+	  INNER JOIN dbo.posts  tablePosts  ON tablePersons.id_post = tablePosts.id	
 	 /* сортировку, фильтры, защиту sql injection добавлю позже */
 RETURN  
 GO  

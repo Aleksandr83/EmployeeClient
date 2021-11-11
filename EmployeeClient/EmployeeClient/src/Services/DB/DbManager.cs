@@ -1,4 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Data.Types;
+using EmployeeClient.Services.DB;
 using EmployeeClient.Services.Views;
 using EmployeeClient.Views.Interfaces;
 using System;
@@ -9,10 +11,19 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient
 {
-    internal sealed class DbManager
+    internal sealed class DbManager 
     {
         static bool _IsConnected = false;
-        public static bool IsConnected() => _IsConnected;   
+        static IConnectionString _PrimaryConnectionString;
+
+        public static bool IsConnected() => _IsConnected;
+
+        public static IConnectionString GetPrimaryConnectionString() 
+            => _PrimaryConnectionString;
+        public static void SetPrimaryConnectionString(IConnectionString connectionString)
+        {
+            _PrimaryConnectionString = connectionString;
+        }
 
         public static void Connected()
         {
@@ -22,7 +33,7 @@ namespace EmployeeClient
                 ViewManager.HideAll<ISettingsView>();
             }            
         }
-
+        
         public static void Disconnected()
         {
             ViewManager.ShowAll<ISettingsView>();

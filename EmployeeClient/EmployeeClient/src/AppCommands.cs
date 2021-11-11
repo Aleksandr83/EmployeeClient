@@ -5,9 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeClient.src
+namespace EmployeeClient
 {
-    internal class CommandsManager
+    internal sealed class AppCommands
     {
+        public static void ConnectionToDB(object parameter)
+        {
+            
+        }
+
     }
 }

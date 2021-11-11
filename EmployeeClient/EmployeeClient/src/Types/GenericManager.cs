@@ -24,6 +24,12 @@ namespace EmployeeClient.Services
             ValueСaching(value);
         }
 
+        public static void Registration<T>(T service) where T : class
+        {
+            AddSingleton<T>(service);
+            BuildServiceProvider();
+        }
+
         private static void ValueСaching(object value)
         {
             _Cache?.Add(value);

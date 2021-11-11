@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Types
 {
-    public class ConnectionString
+    public class ConnectionString : IConnectionString
     {
         private Func<String, String> _PasswordDecoder;
 
@@ -21,9 +21,9 @@ namespace EmployeeClient.Data.Types
         public ConnectionString
             (String server, String database, String login, string password)
         {
-            Server = server;
+            Server   = server;
             Database = database;
-            Login = login;
+            Login    = login;
             Password = password;
         }
 
@@ -37,10 +37,10 @@ namespace EmployeeClient.Data.Types
         {
             return String.Format
                 (
-                    "Data Source={0};" +
-                    "Initial Catalog={1};" +
-                    "User id={2};" +
-                    "Password={3};",
+                    "Data Source     ={0};" +
+                    "Initial Catalog ={1};" +
+                    "User id         ={2};" +
+                    "Password        ={3};",
                     Server,
                     Database,
                     Login,

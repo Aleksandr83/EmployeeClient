@@ -174,44 +174,52 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\CommandsManager.cs" />
+    <Compile Include="src\App.cs" />
+    <Compile Include="src\AppCommands.cs" />
+    <Compile Include="src\Configuration\CommandsNames.cs" />
+    <Compile Include="src\Data\Types\IConnectionString.cs" />
+    <Compile Include="src\Services\Commands\CommandsManager.cs" />
     <Compile Include="src\Configuration\SettingsNames.cs" />
     <Compile Include="src\Configuration\SettingsSections.cs" />
-    <Compile Include="src\Controls\DataGridViewControl.cs">
+    <Compile Include="src\Services\Commands\CommandsService.cs" />
+    <Compile Include="src\Types\Commands\Command.cs" />
+    <Compile Include="src\Types\Commands\ICommand.cs" />
+    <Compile Include="src\Services\Commands\ICommandsService.cs" />
+    <Compile Include="src\Views\Controls\DataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\DataGridViewControl.Designer.cs">
+    <Compile Include="src\Views\Controls\DataGridViewControl.Designer.cs">
       <DependentUpon>DataGridViewControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\DockManagerControl.cs">
+    <Compile Include="src\Views\Controls\DockManagerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\DockManagerControl.Designer.cs">
+    <Compile Include="src\Views\Controls\DockManagerControl.Designer.cs">
       <DependentUpon>DockManagerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\DockManagerPresenter.cs">
+    <Compile Include="src\Views\Controls\DockManagerPresenter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\DockManagerPresenter.Designer.cs">
+    <Compile Include="src\Views\Controls\DockManagerPresenter.Designer.cs">
       <DependentUpon>DockManagerPresenter.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\EmployeeDataGridViewControl.cs">
+    <Compile Include="src\Views\Controls\EmployeeDataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\EmployeeDataGridViewControl.Designer.cs">
+    <Compile Include="src\Views\Controls\EmployeeDataGridViewControl.Designer.cs">
       <DependentUpon>EmployeeDataGridViewControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\EmployeeListFiltersControl.cs">
+    <Compile Include="src\Views\Controls\EmployeeListFiltersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\EmployeeListFiltersControl.Designer.cs">
+    <Compile Include="src\Views\Controls\EmployeeListFiltersControl.Designer.cs">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Controls\Interfaces\IUserControl.cs" />
-    <Compile Include="src\Controls\ToolBarControl.cs">
+    <Compile Include="src\Types\Controls\IUserControl.cs" />
+    <Compile Include="src\Views\Controls\ToolBarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Controls\ToolBarControl.Designer.cs">
+    <Compile Include="src\Views\Controls\ToolBarControl.Designer.cs">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Data\Models\Employee.cs" />
@@ -227,15 +235,17 @@
     <Compile Include="src\Helpers\ResourcesManagerHelper.cs" />
     <Compile Include="src\Data\Repositories\RefferRepository.cs" />
     <Compile Include="src\Data\Repositories\GenericRepository.cs" />
-    <Compile Include="src\DbManager.cs" />
+    <Compile Include="src\Services\DB\DbManager.cs" />
     <Compile Include="src\Services\App\AppService.cs" />
     <Compile Include="src\Services\App\IAppService.cs" />
+    <Compile Include="src\Services\DB\DbService.cs" />
+    <Compile Include="src\Services\DB\IDbService.cs" />
     <Compile Include="src\Services\DockManager\IDockManager.cs" />
     <Compile Include="src\Services\DockManager\IDockManagerService.cs" />
-    <Compile Include="src\Services\GenericManager.cs" />
-    <Compile Include="src\Services\IReffer.cs" />
-    <Compile Include="src\Services\IService.cs" />
-    <Compile Include="src\Services\ReffersManager.cs" />
+    <Compile Include="src\Types\GenericManager.cs" />
+    <Compile Include="src\Services\Reffers\IReffer.cs" />
+    <Compile Include="src\Types\Services\IService.cs" />
+    <Compile Include="src\Services\Reffers\ReffersManager.cs" />
     <Compile Include="src\Services\ServiceManager.cs" />
     <Compile Include="src\Services\Settings\ISettingsService.cs" />
     <Compile Include="src\Services\Settings\SettingsService.cs" />
@@ -250,34 +260,34 @@
     <Compile Include="src\Types\Configuration\WritableJsonConfigurationProvider.cs" />
     <Compile Include="src\Types\Configuration\WritableJsonConfigurationSource.cs" />
     <Compile Include="src\Types\MultiValuesDictionary.cs" />
-    <Compile Include="src\ViewManager.cs" />
+    <Compile Include="src\Services\Views\ViewManager.cs" />
     <Compile Include="src\Services\Views\IView.cs" />
-    <Compile Include="Views\AboutProgramView.cs">
+    <Compile Include="src\Views\AboutProgramView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\AboutProgramView.Designer.cs">
+    <Compile Include="src\Views\AboutProgramView.Designer.cs">
       <DependentUpon>AboutProgramView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\EmployeesListView.cs">
+    <Compile Include="src\Views\EmployeesListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\EmployeesListView.Designer.cs">
+    <Compile Include="src\Views\EmployeesListView.Designer.cs">
       <DependentUpon>EmployeesListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Interfaces\IAboutProgramView.cs" />
-    <Compile Include="Views\Interfaces\IEmployeesListView.cs" />
-    <Compile Include="Views\Interfaces\IReportView.cs" />
-    <Compile Include="Views\Interfaces\ISettingsView.cs" />
-    <Compile Include="Views\ReportView.cs">
+    <Compile Include="src\Views\Interfaces\IAboutProgramView.cs" />
+    <Compile Include="src\Views\Interfaces\IEmployeesListView.cs" />
+    <Compile Include="src\Views\Interfaces\IReportView.cs" />
+    <Compile Include="src\Views\Interfaces\ISettingsView.cs" />
+    <Compile Include="src\Views\ReportView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\ReportView.Designer.cs">
+    <Compile Include="src\Views\ReportView.Designer.cs">
       <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingsView.cs">
+    <Compile Include="src\Views\SettingsView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\SettingsView.Designer.cs">
+    <Compile Include="src\Views\SettingsView.Designer.cs">
       <DependentUpon>SettingsView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
@@ -293,35 +303,35 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\Controls\DataGridViewControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\DataGridViewControl.resx">
       <DependentUpon>DataGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Controls\DockManagerControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\DockManagerControl.resx">
       <DependentUpon>DockManagerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Controls\DockManagerPresenter.resx">
+    <EmbeddedResource Include="src\Views\Controls\DockManagerPresenter.resx">
       <DependentUpon>DockManagerPresenter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Controls\EmployeeDataGridViewControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\EmployeeDataGridViewControl.resx">
       <DependentUpon>EmployeeDataGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Controls\EmployeeListFiltersControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\EmployeeListFiltersControl.resx">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Controls\ToolBarControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\ToolBarControl.resx">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\AboutProgramView.resx">
+    <EmbeddedResource Include="src\Views\AboutProgramView.resx">
       <DependentUpon>AboutProgramView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\EmployeesListView.resx">
+    <EmbeddedResource Include="src\Views\EmployeesListView.resx">
       <DependentUpon>EmployeesListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportView.resx">
+    <EmbeddedResource Include="src\Views\ReportView.resx">
       <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SettingsView.resx">
+    <EmbeddedResource Include="src\Views\SettingsView.resx">
       <DependentUpon>SettingsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

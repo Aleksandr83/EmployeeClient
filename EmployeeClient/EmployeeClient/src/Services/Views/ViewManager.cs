@@ -14,20 +14,6 @@ namespace EmployeeClient
 {
     internal sealed class ViewManager : GenericManager
     {
-        public static void RegistredAll()
-        {
-            RegistredViews();
-            BuildServiceProvider();           
-        }
-
-        private static void RegistredViews()
-        {
-            AddSingleton<ISettingsView>(new SettingsView());
-            AddSingleton<IEmployeesListView>(new EmployeesListView());
-            AddSingleton<IReportView>(new ReportView());
-            AddSingleton<IAboutProgramView>(new AboutProgramView());
-        }
-
         public static IView GetView<T>()
         {          
             return (IView)GetServiceProvider().GetService<T>();          

@@ -1,6 +1,9 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Configuration;
+using EmployeeClient.Data.Types;
 using EmployeeClient.Helpers;
+using EmployeeClient.Services.Commands;
+using EmployeeClient.Services.DB;
 using EmployeeClient.Services.Settings;
 using EmployeeClient.Views.Interfaces;
 using System;
@@ -51,6 +54,18 @@ namespace EmployeeClient.Views
         {
             return (ISettingsService)ServicesManager
                 .GetService<ISettingsService>();
+        }
+
+        private IDbService GetDbService()
+        {
+            return (IDbService)ServicesManager
+                .GetService<IDbService>();
+        }
+
+        private ICommandsService GetCommandsService()
+        {
+            return (ICommandsService)ServicesManager
+                .GetService<ICommandsService>();
         }
 
         public new void Update()
@@ -176,8 +191,17 @@ namespace EmployeeClient.Views
         private void ConnectionButton_Click(object sender, EventArgs e)
         {
             SaveFormFields();
-            // connect to database
-
+            var connectionString = new ConnectionString
+                (
+                    GetFieldServerName(),
+                    GetFieldDatabase(),
+                    GetFieldLogin(),
+                    GetFieldPassword()
+                );
+            GetDbService()?.SetPrimaryConnectionString(connectionString);
+            GetCommandsService()?
+                .GetCommandByName(CommandsNames.CONNECTED_TO_DB)?
+                .Execute(null);       
         }
 
         private void ResetPasswordButton_Click(object sender, EventArgs e)
