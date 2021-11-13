@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Configuration;
-using EmployeeClient.Data.Types;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.Commands;
 using EmployeeClient.Services.DB;
@@ -9,13 +8,9 @@ using EmployeeClient.Views.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Resources;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeeClient.Views
@@ -77,63 +72,37 @@ namespace EmployeeClient.Views
 
         void LoadFormFields()
         {
-            String  s;
-            String  parameterName;
-            String  settingsSection;
-            dynamic defaultValue = false;
-            var settingsService = GetSettingsService();               
-            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
-            parameterName   = SettingsNames.SETTINGS_DB_SERVER;
-            s = settingsService?.GetStringValue(settingsSection, parameterName, "localhost");
-            SetFieldServerName(s);
-            parameterName   = SettingsNames.SETTINGS_DB_DATABASE; 
-            s = settingsService?.GetStringValue(settingsSection, parameterName);
-            SetFieldDatabase(s);
-            parameterName   = SettingsNames.SETTINGS_DB_LOGIN;
-            s = settingsService?.GetStringValue(settingsSection, parameterName, "sa");
-            SetFieldLogin(s);
-            defaultValue  = false;
-            parameterName = SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;            
-            bool? isSavePassword = settingsService?.GetBoolValue(settingsSection, parameterName);
-            SetFieldIsSavePassword(isSavePassword??defaultValue);            
-            parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
-            s = settingsService?.GetStringValue(settingsSection, parameterName);
-            SetFieldPassword(s);            
+            var configuration    = GetDbService()?.PrimaryDbConfiguration?.Load();           
+            var connectionString = configuration?.GetConnectionString();             
+            SetFieldServerName(connectionString?.Server);
+            SetFieldDatabase(connectionString?.Database);
+            SetFieldLogin(connectionString?.Login);
+            SetFieldPassword(connectionString?.Password?.GetValue());       
+            SetFieldIsSavePassword(configuration?.IsSavePassword??configuration.GetDefaultIsSavePassword());         
         }
 
         void SaveFormFields()
-        {         
-            String parameterName;
-            String settingsSection;
-            var settingsService = GetSettingsService();
-            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
-            parameterName   = SettingsNames.SETTINGS_DB_SERVER;           
-            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldServerName());
-            parameterName   = SettingsNames.SETTINGS_DB_DATABASE;        
-            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldDatabase());
-            parameterName   = SettingsNames.SETTINGS_DB_LOGIN;      
-            settingsService?.SetStringValue(settingsSection, parameterName, GetFieldLogin());
-            var isSavePassword = GetFieldIsSavePassword();
-            parameterName   = SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;
-            settingsService?.SetBoolValue(settingsSection, parameterName, isSavePassword);
-            if (isSavePassword)
-            {
-                parameterName = SettingsNames.SETTINGS_DB_PASSWORD;
-                settingsService?.SetPasswordValue(settingsSection, parameterName, GetFieldPassword());
-            }
-            settingsService?.Save();
+        {
+            var configuration = GetDbService()?.PrimaryDbConfiguration;
+            if (configuration == null) return;
+            var connectionString = GetDbService()?.CreateConnectionString
+                (
+                    GetFieldServerName(),
+                    GetFieldDatabase(),
+                    GetFieldLogin()
+                );
+            connectionString?.Password?.SetValue(GetFieldPassword());            
+            configuration.IsSavePassword = GetFieldIsSavePassword();
+            configuration.SetConnectionString(connectionString);           
         }
 
         void ResetPassword()
-        {
-            String parameterName;
-            String settingsSection;
-            var settingsService = GetSettingsService();
-            settingsSection = SettingsSections.SETTINGS_SECTION_DB;
-            parameterName   = SettingsNames.SETTINGS_DB_PASSWORD;
-            settingsService?.SetPasswordValue(settingsSection, parameterName);            
-            settingsService?.Save();
+        {            
+            var configuration = GetDbService()?.PrimaryDbConfiguration;          
+            var connectionString = configuration?.GetConnectionString();
+            connectionString?.Password.SetValue(String.Empty);
             SetFieldPassword(null);
+            configuration?.Save();
         }        
 
         private void SetToolTips()
@@ -191,17 +160,9 @@ namespace EmployeeClient.Views
         private void ConnectionButton_Click(object sender, EventArgs e)
         {
             SaveFormFields();
-            var connectionString = new ConnectionString
-                (
-                    GetFieldServerName(),
-                    GetFieldDatabase(),
-                    GetFieldLogin(),
-                    GetFieldPassword()
-                );
-            GetDbService()?.SetPrimaryConnectionString(connectionString);
             GetCommandsService()?
                 .GetCommandByName(CommandsNames.CONNECTED_TO_DB)?
-                .Execute(null);       
+                .Execute(null);
         }
 
         private void ResetPasswordButton_Click(object sender, EventArgs e)

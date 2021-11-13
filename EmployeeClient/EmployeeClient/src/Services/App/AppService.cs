@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using Newtonsoft.Json;
 using EmployeeClient.Types.Configuration;
 using System;
 using System.Collections.Generic;

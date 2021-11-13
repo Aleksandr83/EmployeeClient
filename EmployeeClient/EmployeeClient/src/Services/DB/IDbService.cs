@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Services.DB
 {
-    internal interface IDbService : IService
-    {        
-        IConnectionString GetPrimaryConnectionString();
-        void SetPrimaryConnectionString(IConnectionString connectionString);
+    public interface IDbService : IService
+    {
+        IDatabaseConfiguration PrimaryDbConfiguration { get; }
+        IConnectionString CreateConnectionString(String server, String database, String login);
+
     }
 }

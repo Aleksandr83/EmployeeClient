@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Types
 {
-    internal interface IConnectionString
+    public interface IConnectionString
     {
-        String Server           { get; }
-        String Database         { get; }
-        String Login            { get; }
-        String Password         { get; }
-        bool IsPasswordDecode   { get; }
-
+        String    Server   { get; }
+        String    Database { get; }
+        String    Login    { get; }
+        IPassword Password { get; }
+                
         string ToMSSQL();
     }
 }

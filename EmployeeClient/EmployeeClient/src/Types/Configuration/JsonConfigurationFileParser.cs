@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using Newtonsoft.Json;
+using EmployeeClient.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,7 +53,7 @@ namespace EmployeeClient.Types.Configuration
         {
             return (string.IsNullOrEmpty(jsonText.Trim()))?
                 new JsonSettings() :
-                JsonConvert.DeserializeObject<JsonSettings>(jsonText);
+                JsonHelper.Deserialize<JsonSettings>(jsonText);                
         }
         
     }

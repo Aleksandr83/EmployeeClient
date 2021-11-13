@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Data.Types;
+using EmployeeClient.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,18 @@ namespace EmployeeClient.Services.DB
 {
     internal class DbService : IDbService
     {
-        public IConnectionString GetPrimaryConnectionString()
+        public IDatabaseConfiguration PrimaryDbConfiguration { get; }
+
+        public DbService()
         {
-            return DbManager.GetPrimaryConnectionString();
+            PrimaryDbConfiguration = (IDatabaseConfiguration)new MsSqlDatabaseConfiguration();
         }
 
-        public void SetPrimaryConnectionString(IConnectionString connectionString)
+        protected virtual IPassword CreatePassword() => new Password();
+        public IConnectionString CreateConnectionString(String server, String database, String login)
         {
-            DbManager.SetPrimaryConnectionString(connectionString);
-        }
+            return new ConnectionString(server, database, login, CreatePassword());
+        }       
+       
     }
 }

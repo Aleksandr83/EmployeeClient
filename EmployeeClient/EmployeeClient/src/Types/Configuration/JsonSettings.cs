@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using Newtonsoft.Json;
+using EmployeeClient.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,9 +55,9 @@ namespace EmployeeClient.Types.Configuration
             return result;
         }
 
-        public String ToJson(Formatting formatting = Formatting.Indented)
+        public String ToJson()
         {           
-            return JsonConvert.SerializeObject(this, formatting);
+            return JsonHelper.Serialize(this);
         }
     }
 }

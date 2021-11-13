@@ -177,7 +177,12 @@
     <Compile Include="src\App.cs" />
     <Compile Include="src\AppCommands.cs" />
     <Compile Include="src\Configuration\CommandsNames.cs" />
+    <Compile Include="src\Data\Types\DatabaseConfiguration.cs" />
+    <Compile Include="src\Data\Types\GenericDatabaseConfiguration.cs" />
+    <Compile Include="src\Data\Types\IDatabaseConfiguration.cs" />
     <Compile Include="src\Data\Types\IConnectionString.cs" />
+    <Compile Include="src\Data\Types\MsSqlDatabaseConfiguration.cs" />
+    <Compile Include="src\Helpers\JsonHelper.cs" />
     <Compile Include="src\Services\Commands\CommandsManager.cs" />
     <Compile Include="src\Configuration\SettingsNames.cs" />
     <Compile Include="src\Configuration\SettingsSections.cs" />
@@ -185,6 +190,10 @@
     <Compile Include="src\Types\Commands\Command.cs" />
     <Compile Include="src\Types\Commands\ICommand.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
+    <Compile Include="src\Types\Password\IPassword.cs" />
+    <Compile Include="src\Types\Password\IPasswordContainer.cs" />
+    <Compile Include="src\Types\Password\Password.cs" />
+    <Compile Include="src\Types\Password\PasswordContainer.cs" />
     <Compile Include="src\Views\Controls\DataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -246,7 +255,7 @@
     <Compile Include="src\Services\Reffers\IReffer.cs" />
     <Compile Include="src\Types\Services\IService.cs" />
     <Compile Include="src\Services\Reffers\ReffersManager.cs" />
-    <Compile Include="src\Services\ServiceManager.cs" />
+    <Compile Include="src\Types\ServiceManager.cs" />
     <Compile Include="src\Services\Settings\ISettingsService.cs" />
     <Compile Include="src\Services\Settings\SettingsService.cs" />
     <Compile Include="src\Services\Views\INormalView.cs" />

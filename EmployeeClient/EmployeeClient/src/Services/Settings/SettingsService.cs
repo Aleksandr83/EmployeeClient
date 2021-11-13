@@ -52,15 +52,6 @@ namespace EmployeeClient.Services.Settings
                 .GetSection(string.Format("{0}:{1}", section, parameterName))
                 .Value = value.ToString()?.Normalize();
         }
-
-        public void SetPasswordValue
-            (String section, String parameterName, String password = "")
-        {
-            var configuration = GetConfiguration();
-            configuration
-                .GetSection(string.Format("{0}:{1}", section, parameterName))
-                .Value = Base64Helper.Base64Encode(password);
-        }
         
         private IConfiguration GetConfiguration()
         {

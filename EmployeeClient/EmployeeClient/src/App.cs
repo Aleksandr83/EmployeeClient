@@ -25,7 +25,7 @@ namespace EmployeeClient
             RegisteringServices();
             InitConfiguration();
             RegisteringCommands();
-            RegisteringViews();
+            RegisteringViews();           
             //DbManager.Disconnected();
             DbManager.Connected(); // temp
             AttachViewsInDockManager();
@@ -73,6 +73,18 @@ namespace EmployeeClient
                     CommandsNames.CONNECTED_TO_DB,                    
                     AppCommands.ConnectionToDB
                 ));
+        }              
+
+        private static ISettingsService GetSettingsService()
+        {
+            return (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+        }
+
+        private static IDbService GetDbService()
+        {
+            return (IDbService)ServicesManager
+                .GetService<IDbService>();
         }
     }
 }

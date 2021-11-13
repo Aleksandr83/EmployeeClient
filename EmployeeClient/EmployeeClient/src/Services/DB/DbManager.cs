@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Data.Types;
+using EmployeeClient.Helpers;
 using EmployeeClient.Services.DB;
 using EmployeeClient.Services.Views;
 using EmployeeClient.Views.Interfaces;
@@ -22,9 +23,9 @@ namespace EmployeeClient
             => _PrimaryConnectionString;
         public static void SetPrimaryConnectionString(IConnectionString connectionString)
         {
-            _PrimaryConnectionString = connectionString;
+            _PrimaryConnectionString = connectionString;          
         }
-
+       
         public static void Connected()
         {
             if (IsConnected())

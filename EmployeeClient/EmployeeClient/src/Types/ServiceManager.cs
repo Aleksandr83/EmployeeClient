@@ -7,8 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EmployeeClient.Services.DB;
-using EmployeeClient.Services.Commands;
+using EmployeeClient.Types;
 
 namespace EmployeeClient
 {

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Services;
+using EmployeeClient.Types;
 using EmployeeClient.Types.Commands;
 using System;
 using System.Collections.Generic;

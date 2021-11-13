@@ -5,9 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeClient.Services
+namespace EmployeeClient.Types
 {
-    public interface IService
+    internal interface IPasswordContainer
     {
+        String GetPassword();
+        void   SetPassword(String password);
+        String ToJson();
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeClient.Services
+namespace EmployeeClient.Types
 {
     internal class GenericManager
     {

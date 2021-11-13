@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data
 {
-    internal enum TDatabaseType
+    public enum TDatabaseType
     {
         MSSQL
     }

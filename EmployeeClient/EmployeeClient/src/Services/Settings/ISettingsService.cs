@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Services.Settings
 {
-    internal interface ISettingsService:IService
+    public interface ISettingsService:IService
     {
         string GetStringValue(String section, String parameterName,String defaultValue = "");
         void   SetStringValue(String section, String parameterName,String value = ""); 
         bool   GetBoolValue(String section, String parameterName, bool defaultValue = false);
-        void   SetBoolValue(String section, String parameterName, bool value = false);
-        void   SetPasswordValue(String section, String parameterName,String password = "");
+        void   SetBoolValue(String section, String parameterName, bool value = false);        
         void   Save();
     }
 }
