@@ -29,7 +29,7 @@ namespace EmployeeClient.Types
         }
         protected IPasswordContainer GetPasswordContainer() => _PasswordContainer;
         public virtual String GetValue()
-        {
+        {           
             return GetPasswordContainer()?.GetPassword();
         }
         public virtual void SetValue(String value)
@@ -45,6 +45,7 @@ namespace EmployeeClient.Types
             }
             var json = Base64Helper.Base64Decode(encodePassword.Trim());
             var passwordContainer = ContainerDeserilize(json);
+            SetPasswordContainer(passwordContainer);
         }
 
         protected virtual String ContainerSerilize() 
@@ -52,7 +53,7 @@ namespace EmployeeClient.Types
 
         protected virtual IPasswordContainer ContainerDeserilize(String json)
         {
-            return null;
+            return JsonHelper.Deserialize<PasswordContainer>(json);
         }
 
         public virtual String GetEncodeString()

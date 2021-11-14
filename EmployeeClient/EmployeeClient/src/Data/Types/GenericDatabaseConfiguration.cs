@@ -94,7 +94,7 @@ namespace EmployeeClient.Data.Types
             {
                 settingsService?.SetStringValue
                     (
-                        settingsSection, GetUserSettingsParameterName(),
+                        settingsSection, GetPasswordSettingsParameterName(),
                         connectionString?.Password?.GetEncodeString()
                     );
             }

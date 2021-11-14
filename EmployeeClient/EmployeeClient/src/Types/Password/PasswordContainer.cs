@@ -11,9 +11,9 @@ namespace EmployeeClient.Types
     internal class PasswordContainer : IPasswordContainer
     {
         private const int ALG_PASS_NOT_CODED   = 0;
-        public int      Algoritm { get; set; }
-        public String   Password { get; set; }
-        public String   Salt     { get; set; }
+        public virtual int      Algoritm { get; set; }
+        public virtual String   Password { get; set; }
+        public virtual String   Salt     { get; set; }
 
         public PasswordContainer()
         {
