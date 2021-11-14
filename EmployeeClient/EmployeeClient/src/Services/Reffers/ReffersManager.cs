@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Services
 {
-    internal class ReffersManager : GenericManager
+    internal sealed class ReffersManager : GenericManager
     {
-
+        public static IReffer GetRefferByItemType(Type refferItemType)
+        {
+            return GetAll<IReffer>()?
+                .Where(x => x.GetRefferItemType() == refferItemType)?
+                .FirstOrDefault();            
+        }
     }
 }

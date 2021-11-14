@@ -77,6 +77,7 @@ namespace EmployeeClient.Views
             SetFieldServerName(connectionString?.Server);
             SetFieldDatabase(connectionString?.Database);
             SetFieldLogin(connectionString?.Login);
+            SetFieldPassword(String.Empty);
             if (GetDbService()?.PrimaryDbConfiguration?.IsSavePassword??false)
                 SetFieldPassword(connectionString?.Password?.GetValue());       
             SetFieldIsSavePassword(configuration?.IsSavePassword??configuration.GetDefaultIsSavePassword());         

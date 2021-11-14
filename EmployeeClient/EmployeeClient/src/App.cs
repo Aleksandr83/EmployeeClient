@@ -1,10 +1,13 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Configuration;
 using EmployeeClient.Controls;
+using EmployeeClient.Data.Models.Reffers;
+using EmployeeClient.Data.Repositories;
 using EmployeeClient.Services.App;
 using EmployeeClient.Services.Commands;
 using EmployeeClient.Services.DB;
 using EmployeeClient.Services.DockManager;
+using EmployeeClient.Services.Reffers;
 using EmployeeClient.Services.Settings;
 using EmployeeClient.Services.Views;
 using EmployeeClient.Types.Commands;
@@ -25,7 +28,8 @@ namespace EmployeeClient
             RegisteringServices();
             InitConfiguration();
             RegisteringCommands();
-            RegisteringViews();           
+            RegisteringReffers();
+            RegisteringViews();            
             //DbManager.Disconnected();
             DbManager.Connected(); // temp
             AttachViewsInDockManager();
@@ -61,6 +65,7 @@ namespace EmployeeClient
             ServicesManager.Registration<ISettingsService>(new SettingsService());
             ServicesManager.Registration<ICommandsService>(new CommandsService());
             ServicesManager.Registration<IDbService>(new DbService());
+            ServicesManager.Registration<IReffersService>(new ReffersService());    
             ServicesManager.Registration<IDockManagerService>(new DockManagerControl());
         }
 
@@ -75,16 +80,16 @@ namespace EmployeeClient
                 ));
         }              
 
-        private static ISettingsService GetSettingsService()
+        private static void RegisteringReffers()
         {
-            return (ISettingsService)ServicesManager
-                .GetService<ISettingsService>();
-        }
-
-        private static IDbService GetDbService()
-        {
-            return (IDbService)ServicesManager
-                .GetService<IDbService>();
+            var reffersService = (IReffersService)ServicesManager
+                .GetService<IReffersService>();
+            reffersService.RefferRegistration
+                (new RefferRepository<Post>(ReffersNames.REFFER_NAME_POSTS));
+            reffersService.RefferRegistration
+                (new RefferRepository<Status>(ReffersNames.REFFER_NAME_STATUSES));
+            reffersService.RefferRegistration
+                (new RefferRepository<Departament>(ReffersNames.REFFER_NAME_DEPARTAMENTS));
         }
     }
 }

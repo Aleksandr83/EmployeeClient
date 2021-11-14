@@ -48,10 +48,6 @@ namespace EmployeeClient.Types
             return result;
             
         }
-
-        //public static IEnumerable<T> GetAll<T>()
-        //{        
-        //    return GetServiceProvider().GetServices<T>();
-        //}
+        
     }
 }

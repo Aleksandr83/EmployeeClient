@@ -1,4 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Data.Models.Reffers;
+using EmployeeClient.Data.Repositories;
 using EmployeeClient.Services.DB;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,6 @@ namespace EmployeeClient
         {
             (ServicesManager.GetService<IDbService>() as IDbService)?
                 .PrimaryDbConfiguration?.Save();
-
-            
         }
 
     }

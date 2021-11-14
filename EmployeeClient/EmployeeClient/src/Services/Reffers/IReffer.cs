@@ -9,5 +9,7 @@ namespace EmployeeClient.Services
 {
     internal interface IReffer
     {
+        Type GetRefferItemType();
+        IList<dynamic> GetRefferItems();
     }
 }

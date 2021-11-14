@@ -8,20 +8,32 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Repositories
 {
-    internal abstract class GenericRepository<T> : DbContext where T : class
+    internal abstract class GenericRepository<T> where T : class
     {
-
         public GenericRepository()
-        {            
-            Database.SetInitializer<GenericRepository<T>>(null);
+        {           
         }
 
         protected abstract String GetConnectionString();
+        protected abstract String GetSpNameForGetAll();
 
-        IList<T> GetAll()
+        protected virtual RepositoryContext<T> GetContext(String connectionString)
         {
-            IList<T>  result = null;
+            return new RepositoryContext<T>(connectionString);
+        }
 
+        public virtual IList<T> GetAll()
+        {
+            dynamic   requestResult = null;
+            IList<T>  result = new List<T>();
+            using (var context = GetContext(GetConnectionString()))
+            {
+                requestResult = context.Database?
+                        .SqlQuery<T>(GetSpNameForGetAll())?
+                        .ToList();                
+            }
+            foreach (var item in requestResult)
+                result.Add((T)item);
             return result;
         }
     }

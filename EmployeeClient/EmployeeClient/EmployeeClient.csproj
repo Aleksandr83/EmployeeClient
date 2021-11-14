@@ -177,6 +177,9 @@
     <Compile Include="src\App.cs" />
     <Compile Include="src\AppCommands.cs" />
     <Compile Include="src\Configuration\CommandsNames.cs" />
+    <Compile Include="src\Configuration\ReffersFiltres.cs" />
+    <Compile Include="src\Configuration\ReffersNames.cs" />
+    <Compile Include="src\Data\Repositories\RepositoryContext.cs" />
     <Compile Include="src\Data\Types\DatabaseConfiguration.cs" />
     <Compile Include="src\Data\Types\GenericDatabaseConfiguration.cs" />
     <Compile Include="src\Data\Types\IDatabaseConfiguration.cs" />
@@ -187,6 +190,8 @@
     <Compile Include="src\Configuration\SettingsNames.cs" />
     <Compile Include="src\Configuration\SettingsSections.cs" />
     <Compile Include="src\Services\Commands\CommandsService.cs" />
+    <Compile Include="src\Services\Reffers\IReffersService.cs" />
+    <Compile Include="src\Services\Reffers\ReffersService.cs" />
     <Compile Include="src\Types\Commands\Command.cs" />
     <Compile Include="src\Types\Commands\ICommand.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />

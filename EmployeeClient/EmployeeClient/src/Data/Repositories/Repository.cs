@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Repositories
 {
-    internal class Repository<T>:
+    internal abstract class Repository<T>:
         GenericRepository<T> where T : class
     {
         protected override String GetConnectionString()

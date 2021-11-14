@@ -26,6 +26,8 @@ namespace EmployeeClient.Data.Repositories
             _RepositoryType = repositoryType;
         }
 
+        public String GetRepositoryName() => _RepositoryName;
+        public Type   GetRefferItemType() => typeof(T);
         private TRefferRepositoryType GetRepositoryType() => _RepositoryType;
 
         private IDbService GetDbService()
@@ -33,22 +35,28 @@ namespace EmployeeClient.Data.Repositories
             return (IDbService)ServicesManager.GetService<IDbService>();
         }
 
+        protected override String GetSpNameForGetAll()
+        {
+            return String.Format("uspGet{0}Reffer", GetRepositoryName());
+        }
+
         protected override String GetConnectionString()
         {
-            var dbService = GetDbService();
+            var dbService = GetDbService();           
             IConnectionString connectionString = null; 
             if (GetRepositoryType() == TRefferRepositoryType.SinglePrimaryDatabase)
             {
-                //connectionString = dbService?.GetPrimaryConnectionString();
-                //if (dbService?.GetPrimaryDatabaseType() == TDatabaseType.MSSQL)
-                //    return connectionString.ToMSSQL();
+                var configuration = dbService?.PrimaryDbConfiguration;
+                connectionString  = configuration?.GetConnectionString();
+                if (configuration?.GetDatabaseType() == TDatabaseType.MSSQL)
+                    return connectionString.ToMSSQL();
             }
             return "";
         }
 
-        public String Test()
-        {       
-            return GetConnectionString();
+        public virtual IList<dynamic> GetRefferItems()
+        {
+             return new List<dynamic>(GetAll());
         }
 
     }
