@@ -28,12 +28,19 @@ namespace EmployeeClient.Data.Repositories
             IList<T>  result = new List<T>();
             using (var context = GetContext(GetConnectionString()))
             {
-                requestResult = context.Database?
-                        .SqlQuery<T>(GetSpNameForGetAll())?
-                        .ToList();                
+                try
+                {
+                    requestResult = context.Database?
+                            .SqlQuery<T>(GetSpNameForGetAll())?
+                            .ToList();
+                }
+                catch (Exception) { }   // temp
             }
-            foreach (var item in requestResult)
-                result.Add((T)item);
+            if (requestResult != null)
+            {
+                foreach (var item in requestResult)
+                    result.Add((T)item);
+            }
             return result;
         }
     }
