@@ -195,6 +195,7 @@
     <Compile Include="src\Types\Commands\Command.cs" />
     <Compile Include="src\Types\Commands\ICommand.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
+    <Compile Include="src\Types\Generic\List.cs" />
     <Compile Include="src\Types\Password\IPassword.cs" />
     <Compile Include="src\Types\Password\IPasswordContainer.cs" />
     <Compile Include="src\Types\Password\Password.cs" />

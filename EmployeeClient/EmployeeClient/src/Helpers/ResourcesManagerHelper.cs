@@ -2,6 +2,7 @@
 //using EmployeeClient.Services.Views;
 using EmployeeClient.Controls;
 using EmployeeClient.Types.Controls;
+using EmployeeClient.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,8 @@ namespace EmployeeClient.Helpers
             string s;
             var stack = new Stack<Control>();
             var rootControls = (view as UserControl)?.Controls;
+            if (rootControls == null) 
+                return;
             foreach (var control in rootControls)
                 stack?.Push((Control)control);
             while (stack?.Count > 0)
@@ -77,6 +80,8 @@ namespace EmployeeClient.Helpers
                     SetControlFieldValue(control,s,fieldProperty);
                 }
                 var childrens = control?.Controls;
+                if (childrens == null) 
+                    continue;
                 foreach (var child in childrens)                
                     stack?.Push((Control)child);               
             }

@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Types.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace EmployeeClient.Types
         {
             IList<T> result = new List<T>();
             var values = GetCachingValues();
-            foreach (var value in values)
+            foreach (var value in values ?? List.Empty)
             {
                 if (value is T)
                     result?.Add((T)value);

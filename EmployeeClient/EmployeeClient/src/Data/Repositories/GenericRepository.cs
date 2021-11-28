@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -35,12 +36,9 @@ namespace EmployeeClient.Data.Repositories
                             .ToList();
                 }
                 catch (Exception) { }   // temp
-            }
-            if (requestResult != null)
-            {
-                foreach (var item in requestResult)
-                    result.Add((T)item);
-            }
+            }          
+            foreach (var item in requestResult ?? List.Empty)
+               result?.Add((T)item);            
             return result;
         }
     }
