@@ -41,7 +41,7 @@ namespace EmployeeClient.Types
         {
             IList<T> result = new List<T>();
             var values = GetCachingValues();
-            foreach (var value in values ?? List.Empty)
+            foreach (var value in values ?? (IEnumerable<object>)List.Empty<T>())
             {
                 if (value is T)
                     result?.Add((T)value);

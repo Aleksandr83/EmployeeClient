@@ -1,5 +1,4 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +9,33 @@ namespace EmployeeClient.Helpers
 {
     internal class JsonHelper
     {
-        public static String Serialize(object value)
+        public enum Formatting
+        {
+            None     = 0,
+            Indented = 1
+        }
+        public static String Serialize(object value, Formatting formatting = Formatting.Indented)
         {
             if (value == null)
                 return String.Empty;
-            return JsonConvert.SerializeObject(value, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert
+                .SerializeObject(value, GetFormatingType(formatting));
         }
 
-        public static T Deserialize<T>(String json) where T : class
+        private static Newtonsoft.Json.Formatting GetFormatingType(Formatting formatting)
         {
-            return (T)JsonConvert.DeserializeObject<T>(json);
+            if (formatting == Formatting.Indented)
+                return Newtonsoft.Json.Formatting.Indented;
+            return Newtonsoft.Json.Formatting.None;
         }
+
+        public static T Deserialize<T>(String json, bool isCreateObjectOnEmpty = false) where T : class
+        {
+            if (String.IsNullOrEmpty(json.Trim()))                         
+                return (isCreateObjectOnEmpty)? Activator.CreateInstance<T>(): null;
+            return (T)Newtonsoft.Json.JsonConvert
+                .DeserializeObject<T>(json);
+        }
+       
     }
 }

@@ -186,6 +186,8 @@
     <Compile Include="src\Data\Types\IConnectionString.cs" />
     <Compile Include="src\Data\Types\MsSqlDatabaseConfiguration.cs" />
     <Compile Include="src\Helpers\JsonHelper.cs" />
+    <Compile Include="src\Services\ColumnsConfiguration\ColumnsConfigurationService.cs" />
+    <Compile Include="src\Services\ColumnsConfiguration\IColumnsConfigurationService.cs" />
     <Compile Include="src\Services\Commands\CommandsManager.cs" />
     <Compile Include="src\Configuration\SettingsNames.cs" />
     <Compile Include="src\Configuration\SettingsSections.cs" />
@@ -195,6 +197,10 @@
     <Compile Include="src\Types\Commands\Command.cs" />
     <Compile Include="src\Types\Commands\ICommand.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
+    <Compile Include="src\Types\Controls\DataGrid\IDataGridControl.cs" />
+    <Compile Include="src\Types\Controls\DataGrid\Schema\Column.cs" />
+    <Compile Include="src\Types\Controls\DataGrid\Schema\ColumnsSchema.cs" />
+    <Compile Include="src\Types\Generic\JsonCollection.cs" />
     <Compile Include="src\Types\Generic\List.cs" />
     <Compile Include="src\Types\Password\IPassword.cs" />
     <Compile Include="src\Types\Password\IPasswordContainer.cs" />
@@ -360,6 +366,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="EmployeeClient.pfx" />
+    <EmbeddedResource Include="src\Configuration\zEmployeeListColumns.conf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

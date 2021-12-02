@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Types.Generic
 {
-    internal class List
-    {        
-        public static IList<T> Empty<T>() => new List<T>();
+    internal class JsonCollection<T> 
+    {
+        public IList<T> Items { get; set; } = new List<T>();
+       
     }
 }

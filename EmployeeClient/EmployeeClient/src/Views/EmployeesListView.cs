@@ -42,7 +42,6 @@ namespace EmployeeClient.Views
             InitializeComponent();            
         }
 
-
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

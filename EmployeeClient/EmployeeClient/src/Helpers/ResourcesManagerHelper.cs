@@ -5,7 +5,9 @@ using EmployeeClient.Types.Controls;
 using EmployeeClient.Types.Generic;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +22,47 @@ namespace EmployeeClient.Helpers
         public enum TControlFieldProperty
         {
             Text
+        }
+
+        private static String GetFullResourceName
+            (String resourceName, String resourcePath, Assembly assembly)
+        {
+            if (String.IsNullOrEmpty(resourcePath))
+                return $"{assembly.GetName().Name}.{resourceName.Replace('\\', '.')}";
+            else
+                return $"{assembly.GetName().Name}.{resourcePath}.{resourceName.Replace('\\', '.')}";
+        }
+
+        public static bool IsExistResource
+            (String resourceName,String resourcePath = "",Assembly assembly = null)
+        {            
+            if (assembly == null)
+                assembly = Assembly.GetExecutingAssembly();
+            String fullResourceName = GetFullResourceName(resourceName, resourcePath, assembly);
+            return assembly?.GetManifestResourceNames().Contains(fullResourceName)??false;
+        }
+
+        public static bool IsExistResource(String fullResourceName,Assembly assembly = null)
+        {
+            if (assembly == null)
+                assembly = Assembly.GetExecutingAssembly();
+            return assembly?.GetManifestResourceNames().Contains(fullResourceName) ?? false;
+        }
+
+        public static String ReadStringResource
+            (String resourceName, String resourcePath = "", Assembly assembly = null)
+        {            
+            if (assembly == null)
+                assembly = Assembly.GetExecutingAssembly();
+            String fullResourceName = GetFullResourceName(resourceName, resourcePath, assembly);
+            if (!IsExistResource(fullResourceName, assembly))
+                return String.Empty;
+            using (Stream resourceStream = assembly?.GetManifestResourceStream(fullResourceName))
+            using (StreamReader sr = new StreamReader(resourceStream))
+            {
+               sr.BaseStream.Seek(0, SeekOrigin.Begin);
+               return sr.ReadToEnd();                
+            }            
         }
 
         public static void UpdateControlsHeaders

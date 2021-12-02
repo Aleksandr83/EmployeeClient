@@ -4,6 +4,7 @@ using EmployeeClient.Controls;
 using EmployeeClient.Data.Models.Reffers;
 using EmployeeClient.Data.Repositories;
 using EmployeeClient.Services.App;
+using EmployeeClient.Services.ColumnsConfiguration;
 using EmployeeClient.Services.Commands;
 using EmployeeClient.Services.DB;
 using EmployeeClient.Services.DockManager;
@@ -33,7 +34,8 @@ namespace EmployeeClient
             //DbManager.Disconnected();
             DbManager.Connected(); // temp
             AttachViewsInDockManager();
-        }
+            
+        }             
 
         private static void InitConfiguration()
         {
@@ -66,6 +68,7 @@ namespace EmployeeClient
             ServicesManager.Registration<ICommandsService>(new CommandsService());
             ServicesManager.Registration<IDbService>(new DbService());
             ServicesManager.Registration<IReffersService>(new ReffersService());    
+            ServicesManager.Registration<IColumnsConfigurationService>(new ColumnsConfigurationService());
             ServicesManager.Registration<IDockManagerService>(new DockManagerControl());
         }
 

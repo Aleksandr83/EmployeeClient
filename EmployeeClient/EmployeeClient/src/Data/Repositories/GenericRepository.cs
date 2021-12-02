@@ -37,7 +37,7 @@ namespace EmployeeClient.Data.Repositories
                 }
                 catch (Exception) { }   // temp
             }          
-            foreach (var item in requestResult ?? List.Empty)
+            foreach (var item in requestResult ?? List.Empty<T>())
                result?.Add((T)item);            
             return result;
         }
