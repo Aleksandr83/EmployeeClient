@@ -3,6 +3,7 @@ using EmployeeClient.Configuration;
 using EmployeeClient.Data.Models.Reffers;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.Reffers;
+using EmployeeClient.Services.Settings;
 using EmployeeClient.Types.Controls;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,17 @@ using System.Drawing;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeeClient.Controls
 {
     public partial class EmployeeListFiltersControl : UserControl, IUserControl
-    {       
+    {
+        private int DEFAULT_TIMEOUT = 10000;
+        private int MIN_TIMEOUT     = 1000;
+
         BindingList<Post>        Posts        = new BindingList<Post>();
         BindingList<Status>      Statuses     = new BindingList<Status>();
         BindingList<Departament> Departaments = new BindingList<Departament>();
@@ -78,20 +83,53 @@ namespace EmployeeClient.Controls
         }
         private void LoadItemsInFilter<T>(IList<T> source) 
             where T : class
-        {         
-            var reffersService = (IReffersService)ServicesManager
-                .GetService<IReffersService>();
-            var reffer = reffersService?.GetRefferByItemType(typeof(T));
-            var items  = reffer?.GetRefferItems();
-            InsertItemsInFilter<T>(source, items);
+        {
+            try
+            {
+                var reffersService = (IReffersService)ServicesManager
+                    .GetService<IReffersService>();
+                var reffer = reffersService?.GetRefferByItemType(typeof(T));
+                var items = reffer?.GetRefferItems();
+                InsertItemsInFilter<T>(source, items);
+            }
+            catch (Exception) { }
         }
 
         private void LoadFilters() 
         {
-            LoadItemsInFilter<Post>(Posts);
-            LoadItemsInFilter<Status>(Statuses);
-            LoadItemsInFilter<Departament>(Departaments);
+            var task = new Task<int>(new Func<int>(() => 
+            {
+                var settingsService = GetSettingsService();
+                int timeout = settingsService.GetIntValue
+                    (
+                        SettingsSections.SETTINGS_SECTION_DB,
+                        SettingsNames.SETTINGS_DB_TIMEOUT,
+                        DEFAULT_TIMEOUT
+                    );
+                if (timeout < MIN_TIMEOUT) timeout = MIN_TIMEOUT;
+
+                Thread th = new Thread(() => 
+                {
+                    lock (this)
+                    {
+                        LoadItemsInFilter<Post>(Posts);
+                        LoadItemsInFilter<Status>(Statuses);
+                        LoadItemsInFilter<Departament>(Departaments);                       
+                    }
+                });
+
+                th.Start();                
+                th.Join(DEFAULT_TIMEOUT);
+                th.Abort();                
+                return 0; 
+            }));
+            task.Start();             
         }
-       
+        private ISettingsService GetSettingsService()
+        {
+            return (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+        }
+
     }
 }

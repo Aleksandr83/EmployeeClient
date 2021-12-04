@@ -17,11 +17,16 @@ namespace EmployeeClient.Types
         public ICollection<TValue> GetValues(TKey key) => Items?[key];
         public bool IsContainsKey(TKey key) => Items?.ContainsKey(key) ?? false;
 
-        void Add(TKey key, TValue value)
+        public void Add(TKey key, TValue value)
         {
             Items?.Add(key, value);
         }
 
-        bool Remove(TKey key) => Items?.Remove(key) ?? false;
+        public bool Remove(TKey key) => Items?.Remove(key) ?? false;
+
+        public void Clear()
+        {
+            Items?.Clear();
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace EmployeeClient.Services.Reffers
         }
         public IReffer GetRefferByItemType(Type refferItemType)
         {
-
             return ReffersManager.GetRefferByItemType(refferItemType);
         }        
     }

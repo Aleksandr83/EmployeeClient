@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Types.Generic;
+using EmployeeClient.Types.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Repositories
 {
-    internal abstract class GenericRepository<T> where T : class
+    internal abstract class GenericRepository<T> : 
+        IRepository where T : class 
     {
         public GenericRepository()
         {           
@@ -22,7 +24,7 @@ namespace EmployeeClient.Data.Repositories
         {
             return new RepositoryContext<T>(connectionString);
         }
-
+                
         public virtual IList<T> GetAll()
         {
             dynamic   requestResult = null;

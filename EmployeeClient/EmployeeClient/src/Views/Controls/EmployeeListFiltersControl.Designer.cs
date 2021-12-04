@@ -51,16 +51,18 @@
             this.label1.Location = new System.Drawing.Point(3, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 16);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "%%Filters.Label.LastName";
             // 
             // Field_Status
             // 
+            this.Field_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Field_Status.FormattingEnabled = true;
             this.Field_Status.Location = new System.Drawing.Point(311, 36);
             this.Field_Status.Name = "Field_Status";
             this.Field_Status.Size = new System.Drawing.Size(197, 24);
-            this.Field_Status.TabIndex = 2;
+            this.Field_Status.Sorted = true;
+            this.Field_Status.TabIndex = 1;
             // 
             // label2
             // 
@@ -68,16 +70,18 @@
             this.label2.Location = new System.Drawing.Point(308, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 16);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 0;
             this.label2.Text = "%%Filters.Label.Status";
             // 
             // Field_Post
             // 
+            this.Field_Post.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Field_Post.FormattingEnabled = true;
             this.Field_Post.Location = new System.Drawing.Point(514, 36);
             this.Field_Post.Name = "Field_Post";
             this.Field_Post.Size = new System.Drawing.Size(396, 24);
-            this.Field_Post.TabIndex = 4;
+            this.Field_Post.Sorted = true;
+            this.Field_Post.TabIndex = 2;
             // 
             // label3
             // 
@@ -85,16 +89,18 @@
             this.label3.Location = new System.Drawing.Point(511, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 16);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 0;
             this.label3.Text = "%%Filters.Label.Post";
             // 
             // Field_Departament
             // 
+            this.Field_Departament.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Field_Departament.FormattingEnabled = true;
             this.Field_Departament.Location = new System.Drawing.Point(6, 85);
             this.Field_Departament.Name = "Field_Departament";
             this.Field_Departament.Size = new System.Drawing.Size(502, 24);
-            this.Field_Departament.TabIndex = 6;
+            this.Field_Departament.Sorted = true;
+            this.Field_Departament.TabIndex = 3;
             // 
             // label4
             // 
@@ -102,7 +108,7 @@
             this.label4.Location = new System.Drawing.Point(6, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(185, 16);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 0;
             this.label4.Text = "%%Filters.Label.Departament";
             // 
             // EmployeeListFiltersControl

@@ -14,5 +14,6 @@ namespace EmployeeClient.Configuration
         public const String SETTINGS_DB_LOGIN           = "Login";
         public const String SETTINGS_DB_PASSWORD        = "Password";
         public const String SETTINGS_DB_ISSAVEPASSWORD  = "IsSavePassword";
+        public const String SETTINGS_DB_TIMEOUT         = "Timeout";
     }
 }

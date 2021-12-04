@@ -20,15 +20,35 @@ namespace EmployeeClient.Controls
 
         public DataGridViewControl()
         {
-            InitializeComponent();        
+            InitializeComponent(); 
         }
 
         private DataGridView  GetDataGridView()  => this.dataGridView1;
         private ColumnsSchema GetColumnsSchema() => _ColumnsSchema;
 
+        public void SetReadOnly(bool value)
+        {
+            GetDataGridView().ReadOnly = value;
+        }
+
+        public void SetAutoGenerateColumns(bool value)
+        {
+            GetDataGridView().AutoGenerateColumns = value;
+        }
+
+        public void SetAllowUserAddRows(bool value)
+        {
+            GetDataGridView().AllowUserToAddRows = value;
+        }
+
         public void SetColumnsSchema(ColumnsSchema columnsSchema)
         {
             _ColumnsSchema = columnsSchema;
+        }
+
+        public void SetDataSource(object dataSource)
+        {            
+            GetDataGridView().DataSource = dataSource;
         }
 
         public void CreateColumns()
@@ -50,10 +70,12 @@ namespace EmployeeClient.Controls
         {
             var column = new DataGridViewTextBoxColumn()
             {
-                HeaderText = columnSchema.Header,
-                Width      = columnSchema.DefaultWidth
-            };
-            GetDataGridView()?.Columns?.Add(column);
+                HeaderText       = columnSchema.Header,
+                MinimumWidth     = 20,
+                Width            = columnSchema.DefaultWidth,
+                DataPropertyName = columnSchema.Name
+            };            
+            GetDataGridView()?.Columns?.Add(column);            
         }
     }
 }

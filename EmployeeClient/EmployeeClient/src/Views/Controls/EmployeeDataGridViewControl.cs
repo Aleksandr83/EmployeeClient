@@ -1,6 +1,9 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using EmployeeClient.Configuration;
 using EmployeeClient.Data.Models;
+using EmployeeClient.Data.Repositories;
 using EmployeeClient.Services.ColumnsConfiguration;
+using EmployeeClient.Services.Settings;
 using EmployeeClient.Types.Controls.DataGrid;
 using EmployeeClient.Types.Controls.DataGrid.Schema;
 using EmployeeClient.Types.Generic;
@@ -12,15 +15,21 @@ using System.Drawing;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmployeeClient.Controls
 {
     public partial class EmployeeDataGridViewControl : UserControl
-    {        
-        ColumnsSchema _ColumnsSchema;
-        BindingList<Employee> Employees = new BindingList<Employee>();
+    {
+        private int DEFAULT_TIMEOUT = 10000;
+        private int MIN_TIMEOUT     = 1000;
+
+        ColumnsSchema         _ColumnsSchema;
+        BindingList<Employee> Employees  = new BindingList<Employee>();
+        EmployeeRepository    Repository = new EmployeeRepository();
+
 
         #region ResourceManager
         static readonly ResourceManager _ResourceManager = new ResourceManager(typeof(EmployeeDataGridViewControl));
@@ -32,7 +41,7 @@ namespace EmployeeClient.Controls
         {
             InitializeComponent();
             Init();
-            Update(); // temp
+            Update(); // temp           
         }
 
         private IDataGridControl GetDataGridControl() => this.dataGridViewControl1;
@@ -41,8 +50,12 @@ namespace EmployeeClient.Controls
         {
             InitColumnsSchema();
             var dataGrid = GetDataGridControl();
-            dataGrid?.SetColumnsSchema(GetColumnsSchema());
+            dataGrid?.SetReadOnly(true);
+            dataGrid?.SetAutoGenerateColumns(false);
+            dataGrid?.SetAllowUserAddRows(false);
+            dataGrid?.SetColumnsSchema(GetColumnsSchema());            
             dataGrid?.CreateColumns();
+            dataGrid?.SetDataSource(Employees);
         }
 
         private void InitColumnsSchema()
@@ -63,10 +76,42 @@ namespace EmployeeClient.Controls
             return GetResourceString(headerId);            
         }
 
+        private void EmployeeListUpdate()
+        {
+            var task = new Task<int>(new Func<int>(() =>
+            {
+                var settingsService = GetSettingsService();
+                int timeout = settingsService.GetIntValue
+                    (
+                        SettingsSections.SETTINGS_SECTION_DB,
+                        SettingsNames.SETTINGS_DB_TIMEOUT,
+                        DEFAULT_TIMEOUT
+                    );
+                if (timeout < MIN_TIMEOUT) timeout = MIN_TIMEOUT;
+
+                Thread th = new Thread(() =>
+                {
+                    lock (this)
+                    {
+                        Employees.Clear();
+                        var items = Repository?.GetAll();
+                        foreach (var item in items ?? List.Empty<Employee>())
+                            Employees.Add(item);
+                    }
+                });
+
+                th.Start();
+                th.Join(DEFAULT_TIMEOUT);
+                th.Abort();
+                return 0;
+            }));
+            task.Start();
+        }
+
         public new void Update()
         {
-            base.Update();  
-            
+            base.Update();
+            EmployeeListUpdate();
         }
 
         private ColumnsSchema GetColumnsSchema() => _ColumnsSchema;
@@ -80,6 +125,10 @@ namespace EmployeeClient.Controls
             (IColumnsConfigurationService)ServicesManager
                 .GetService<IColumnsConfigurationService>();
 
-
+        private ISettingsService GetSettingsService()
+        {
+            return (ISettingsService)ServicesManager
+                .GetService<ISettingsService>();
+        }
     }
 }

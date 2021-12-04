@@ -36,13 +36,12 @@ namespace EmployeeClient.Services.Settings
         public bool GetBoolValue
             (String section, String parameterName, bool defaultValue = false)
         {
-            bool result = defaultValue;           
+            bool result = false;           
             var configuration = GetConfiguration();
             var s = configuration
                 .GetSection(string.Format("{0}:{1}", section, parameterName))
                 .Value;
-            bool.TryParse(s, out result);
-            return result;
+            return bool.TryParse(s, out result) ? result : defaultValue;
         }
         public void SetBoolValue
             (String section, String parameterName, bool value = false)
@@ -53,6 +52,17 @@ namespace EmployeeClient.Services.Settings
                 .Value = value.ToString()?.Normalize();
         }
         
+        public int GetIntValue
+            (String section, String parameterName, int defaultValue = 0)
+        {
+            int result = 0;
+            var configuration = GetConfiguration();
+            var s = configuration
+                .GetSection(string.Format("{0}:{1}", section, parameterName))
+                .Value;
+            return int.TryParse(s, out result) ? result : defaultValue;
+        }
+
         private IConfiguration GetConfiguration()
         {
             return (IConfiguration)(ServicesManager

@@ -31,7 +31,7 @@ namespace EmployeeClient.Controls
 
         public void AddDockManagerControl()
         {
-            var dockManager  = (UserControl)GetDockManagerControl();
+            var dockManager  = (UserControl)GetDockManagerControl();           
             dockManager.Dock = DockStyle.Fill;
             this.Controls.Add(dockManager);
         }

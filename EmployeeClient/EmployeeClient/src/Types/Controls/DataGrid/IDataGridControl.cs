@@ -12,5 +12,9 @@ namespace EmployeeClient.Types.Controls.DataGrid
     {
         void CreateColumns();
         void SetColumnsSchema(ColumnsSchema columnsSchema);
+        void SetDataSource(object dataSource);
+        void SetAutoGenerateColumns(bool value);
+        void SetReadOnly(bool value);
+        void SetAllowUserAddRows(bool value);
     }
 }
