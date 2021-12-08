@@ -1,28 +1,22 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Data.Types;
+using alg.Types;
 using EmployeeClient.Data.Types;
-using EmployeeClient.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeClient.Services.DB
+namespace EmployeeClient.src.Services.DB
 {
-    internal class DbService : IDbService
+    internal class DbService:
+        alg.Data.Services.DB.DbService
     {
-        public IDatabaseConfiguration PrimaryDbConfiguration { get; }
-
-        public DbService()
+        protected override IDatabaseConfiguration CreatePrimaryDbConfiguration()
         {
-            PrimaryDbConfiguration = (IDatabaseConfiguration)new MsSqlDatabaseConfiguration();
+            return (IDatabaseConfiguration)new MsSqlDatabaseConfiguration();
         }
-
-        protected virtual IPassword CreatePassword() => new Password();
-        public IConnectionString CreateConnectionString(String server, String database, String login)
-        {
-            return new ConnectionString(server, database, login, CreatePassword());
-        }       
-       
+     
     }
 }

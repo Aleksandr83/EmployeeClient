@@ -1,12 +1,13 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Services.Settings;
+using alg.Types;
+using alg.Types.Controls.DataGrid;
+using alg.Types.Controls.DataGrid.Schema;
+using alg.Types.Generic;
 using EmployeeClient.Configuration;
 using EmployeeClient.Data.Models;
 using EmployeeClient.Data.Repositories;
 using EmployeeClient.Services.ColumnsConfiguration;
-using EmployeeClient.Services.Settings;
-using EmployeeClient.Types.Controls.DataGrid;
-using EmployeeClient.Types.Controls.DataGrid.Schema;
-using EmployeeClient.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

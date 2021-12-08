@@ -79,7 +79,7 @@ AS
 		tableStatus.name AS status,
 		tableDeps.name   AS departament,
 		tablePosts.name  AS post,
-		CONVERT(NVARCHAR,date_employ,104)  AS dateEmploy,
+		CONVERT(NVARCHAR,date_employ, 104) AS dateEmploy,
 		CONVERT(NVARCHAR,date_uneploy,104) AS dateUneploy
 	FROM dbo.persons tablePersons
 	  LEFT OUTER JOIN dbo.status tableStatus ON tablePersons.status  = tableStatus.id

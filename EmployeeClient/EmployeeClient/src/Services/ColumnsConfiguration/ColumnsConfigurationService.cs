@@ -1,13 +1,14 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using EmployeeClient.Helpers;
-using EmployeeClient.Types.Controls.DataGrid.Schema;
-using EmployeeClient.Types.Generic;
+using alg.Types.Controls.DataGrid.Schema;
+using alg.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using alg.Helpers;
 
 namespace EmployeeClient.Services.ColumnsConfiguration
 {

@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Types;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.App;
 using EmployeeClient.Views.Interfaces;

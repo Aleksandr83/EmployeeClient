@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Data;
 using EmployeeClient.Configuration;
-using EmployeeClient.Services.DB;
-using EmployeeClient.Services.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Data.Types
 {
-    internal abstract class DatabaseConfiguration 
-        : GenericDatabaseConfiguration
+    internal abstract class DatabaseConfiguration
+        : alg.Data.Types.DatabaseConfiguration
     {
 
         public DatabaseConfiguration(String configurationName)
-            :base(configurationName)
-        {            
+            : base(configurationName)
+        {
         }
 
         public DatabaseConfiguration
-            (String configurationName,TDatabaseType databaseType)
-            :base(configurationName,databaseType)
-        {            
+            (String configurationName, TDatabaseType databaseType)
+            : base(configurationName, databaseType)
+        {
         }
-        
-        protected override String GetServerSettingsParameterName() 
+
+        protected override String GetServerSettingsParameterName()
             => SettingsNames.SETTINGS_DB_SERVER;
         protected override String GetDatabaseSettingsParameterName()
             => SettingsNames.SETTINGS_DB_DATABASE;
@@ -34,7 +33,7 @@ namespace EmployeeClient.Data.Types
         protected override String GetPasswordSettingsParameterName()
             => SettingsNames.SETTINGS_DB_PASSWORD;
         protected override String GetIsSavePasswordSettingsParameterName()
-            => SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;        
+            => SettingsNames.SETTINGS_DB_ISSAVEPASSWORD;
 
         protected override String GetSettingsSectionName()
         {
@@ -43,19 +42,8 @@ namespace EmployeeClient.Data.Types
             return String.Concat
                 (
                     SettingsSections.SETTINGS_SECTION_DB,
-                    String.Format(sectionPostfixFormat, GetName()??String.Empty)
+                    String.Format(sectionPostfixFormat, GetName() ?? String.Empty)
                 );
-        }
-        protected override ISettingsService GetSettingsService()
-        {
-            return (ISettingsService)ServicesManager
-                .GetService<ISettingsService>();
-        }
-
-        protected override IDbService GetDbService()
-        {
-            return (IDbService)ServicesManager
-                .GetService<IDbService>();
-        }
+        }        
     }
 }

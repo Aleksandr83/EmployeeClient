@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 //using EmployeeClient.Services.Views;
 using EmployeeClient.Controls;
-using EmployeeClient.Types.Controls;
-using EmployeeClient.Types.Generic;
+using alg.Types.Controls;
+using alg.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.IO;

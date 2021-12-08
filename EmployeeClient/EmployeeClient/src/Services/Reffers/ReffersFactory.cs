@@ -1,4 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Data.Repositories;
+using alg.Services;
 using EmployeeClient.Configuration;
 using EmployeeClient.Data.Models.Reffers;
 using EmployeeClient.Data.Repositories;

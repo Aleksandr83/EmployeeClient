@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EmployeeClient.Types;
+using alg.Types;
 
 namespace EmployeeClient
 {

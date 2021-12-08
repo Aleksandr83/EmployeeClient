@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Types;
+using alg.Services;
+using alg.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;

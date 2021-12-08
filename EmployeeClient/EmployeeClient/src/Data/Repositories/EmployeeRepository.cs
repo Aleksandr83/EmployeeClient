@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Data.Repositories;
 using EmployeeClient.Data.Models;
 using System;
 using System.Collections.Generic;

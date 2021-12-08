@@ -179,25 +179,18 @@
     <Compile Include="src\Configuration\CommandsNames.cs" />
     <Compile Include="src\Configuration\ReffersFiltres.cs" />
     <Compile Include="src\Configuration\ReffersNames.cs" />
-    <Compile Include="src\Data\Repositories\DataFiltersCollection.cs" />
-    <Compile Include="src\Data\Repositories\DataFilterValue.cs" />
     <Compile Include="src\Data\Repositories\EmployeeRepository.cs" />
     <Compile Include="src\Services\DataFilterService\DataFilterService.cs" />
     <Compile Include="src\Services\DataFilterService\IDataFilterService.cs" />
+    <Compile Include="src\Services\DB\DbService.cs" />
     <Compile Include="src\Services\Reffers\Reffers.cs" />
     <Compile Include="src\Services\Reffers\ReffersFactory.cs" />
     <Compile Include="src\Services\Services.cs" />
     <Compile Include="src\Services\ServicesFactory.cs" />
     <Compile Include="src\Services\Views\Views.cs" />
     <Compile Include="src\Services\Views\ViewsFactory.cs" />
-    <Compile Include="src\Types\Data\IRepository.cs" />
-    <Compile Include="src\Data\Repositories\RepositoryContext.cs" />
     <Compile Include="src\Data\Types\DatabaseConfiguration.cs" />
-    <Compile Include="src\Data\Types\GenericDatabaseConfiguration.cs" />
-    <Compile Include="src\Data\Types\IDatabaseConfiguration.cs" />
-    <Compile Include="src\Data\Types\IConnectionString.cs" />
     <Compile Include="src\Data\Types\MsSqlDatabaseConfiguration.cs" />
-    <Compile Include="src\Helpers\JsonHelper.cs" />
     <Compile Include="src\Services\ColumnsConfiguration\ColumnsConfigurationService.cs" />
     <Compile Include="src\Services\ColumnsConfiguration\IColumnsConfigurationService.cs" />
     <Compile Include="src\Services\Commands\CommandsManager.cs" />
@@ -206,18 +199,7 @@
     <Compile Include="src\Services\Commands\CommandsService.cs" />
     <Compile Include="src\Services\Reffers\IReffersService.cs" />
     <Compile Include="src\Services\Reffers\ReffersService.cs" />
-    <Compile Include="src\Types\Commands\Command.cs" />
-    <Compile Include="src\Types\Commands\ICommand.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
-    <Compile Include="src\Types\Controls\DataGrid\IDataGridControl.cs" />
-    <Compile Include="src\Types\Controls\DataGrid\Schema\Column.cs" />
-    <Compile Include="src\Types\Controls\DataGrid\Schema\ColumnsSchema.cs" />
-    <Compile Include="src\Types\Generic\JsonCollection.cs" />
-    <Compile Include="src\Types\Generic\List.cs" />
-    <Compile Include="src\Types\Password\IPassword.cs" />
-    <Compile Include="src\Types\Password\IPasswordContainer.cs" />
-    <Compile Include="src\Types\Password\Password.cs" />
-    <Compile Include="src\Types\Password\PasswordContainer.cs" />
     <Compile Include="src\Views\Controls\DataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -248,7 +230,6 @@
     <Compile Include="src\Views\Controls\EmployeeListFiltersControl.Designer.cs">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Types\Controls\IUserControl.cs" />
     <Compile Include="src\Views\Controls\ToolBarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -260,39 +241,15 @@
     <Compile Include="src\Data\Models\Reffers\Post.cs" />
     <Compile Include="src\Data\Models\Reffers\RefferModel.cs" />
     <Compile Include="src\Data\Models\Reffers\Status.cs" />
-    <Compile Include="src\Data\Repositories\Repository.cs" />
-    <Compile Include="src\Data\Repositories\TRefferRepositoryType.cs" />
-    <Compile Include="src\Data\Types\ConnectionString.cs" />
-    <Compile Include="src\Data\Types\TDatabaseType.cs" />
-    <Compile Include="src\Helpers\Base64Helper.cs" />
     <Compile Include="src\Helpers\ResourcesManagerHelper.cs" />
-    <Compile Include="src\Data\Repositories\RefferRepository.cs" />
-    <Compile Include="src\Data\Repositories\GenericRepository.cs" />
     <Compile Include="src\Services\DB\DbManager.cs" />
     <Compile Include="src\Services\App\AppService.cs" />
     <Compile Include="src\Services\App\IAppService.cs" />
-    <Compile Include="src\Services\DB\DbService.cs" />
-    <Compile Include="src\Services\DB\IDbService.cs" />
     <Compile Include="src\Services\DockManager\IDockManager.cs" />
     <Compile Include="src\Services\DockManager\IDockManagerService.cs" />
-    <Compile Include="src\Types\GenericManager.cs" />
-    <Compile Include="src\Services\Reffers\IReffer.cs" />
-    <Compile Include="src\Types\Services\IService.cs" />
     <Compile Include="src\Services\Reffers\ReffersManager.cs" />
-    <Compile Include="src\Types\ServiceManager.cs" />
-    <Compile Include="src\Services\Settings\ISettingsService.cs" />
     <Compile Include="src\Services\Settings\SettingsService.cs" />
     <Compile Include="src\Services\Views\INormalView.cs" />
-    <Compile Include="src\Types\Configuration\JsonConfiguration.cs" />
-    <Compile Include="src\Types\Configuration\JsonConfigurationFile.cs" />
-    <Compile Include="src\Types\Configuration\IConfiguration.cs" />
-    <Compile Include="src\Types\Configuration\JsonConfigurationFileParser.cs" />
-    <Compile Include="src\Types\Configuration\SectionBlock.cs" />
-    <Compile Include="src\Types\Configuration\SectionValue.cs" />
-    <Compile Include="src\Types\Configuration\JsonSettings.cs" />
-    <Compile Include="src\Types\Configuration\WritableJsonConfigurationProvider.cs" />
-    <Compile Include="src\Types\Configuration\WritableJsonConfigurationSource.cs" />
-    <Compile Include="src\Types\MultiValuesDictionary.cs" />
     <Compile Include="src\Services\Views\ViewManager.cs" />
     <Compile Include="src\Services\Views\IView.cs" />
     <Compile Include="src\Views\AboutProgramView.cs">
@@ -402,7 +359,20 @@
     <None Include="Assets\Icons\password_img_16x16.png" />
     <Content Include="Assets\Icons\reset_pass_16x16.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\alg.Data\alg.Data.csproj">
+      <Project>{58ea5046-4710-493b-8521-7a8ee7497603}</Project>
+      <Name>alg.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\alg.Helpers\alg.Helpers.csproj">
+      <Project>{0c6c1ac9-2de5-4976-a8aa-8d41ac64b08a}</Project>
+      <Name>alg.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\alg.Types\alg.Types.csproj">
+      <Project>{1076b01a-57ee-4a17-89c7-2948d93bffcf}</Project>
+      <Name>alg.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

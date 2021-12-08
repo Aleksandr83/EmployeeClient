@@ -1,10 +1,11 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Services.Settings;
+using alg.Types;
+using alg.Types.Controls;
 using EmployeeClient.Configuration;
 using EmployeeClient.Data.Models.Reffers;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.Reffers;
-using EmployeeClient.Services.Settings;
-using EmployeeClient.Types.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

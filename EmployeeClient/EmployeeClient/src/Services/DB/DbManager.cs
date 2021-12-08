@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Data.Types;
-using EmployeeClient.Helpers;
-using EmployeeClient.Services.DB;
+using alg.Data.Types;
 using EmployeeClient.Services.Views;
 using EmployeeClient.Views.Interfaces;
 using System;

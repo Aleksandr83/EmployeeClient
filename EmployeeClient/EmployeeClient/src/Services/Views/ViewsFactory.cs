@@ -12,7 +12,7 @@ namespace EmployeeClient.Services.Views
     internal sealed class ViewsFactory
     {
         public static IView Create<T>()
-        {
+        {            
             if (typeof(T) == typeof(ISettingsView))
                 return (IView)Activator.CreateInstance(typeof(SettingsView));
             if (typeof(T) == typeof(IEmployeesListView))

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Types.Controls.DataGrid;
-using EmployeeClient.Types.Controls.DataGrid.Schema;
-using EmployeeClient.Types.Generic;
+using alg.Types.Controls.DataGrid;
+using alg.Types.Controls.DataGrid.Schema;
+using alg.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,8 @@ using System.Windows.Forms;
 
 namespace EmployeeClient.Controls
 {
-    public partial class DataGridViewControl : UserControl, IDataGridControl
+    public partial class DataGridViewControl : 
+        UserControl, IDataGridControl
     {
         ColumnsSchema _ColumnsSchema;
 

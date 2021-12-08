@@ -1,9 +1,10 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Data.Services.DB;
+using alg.Services.Settings;
+using alg.Types;
 using EmployeeClient.Configuration;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.Commands;
-using EmployeeClient.Services.DB;
-using EmployeeClient.Services.Settings;
 using EmployeeClient.Views.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -79,8 +80,8 @@ namespace EmployeeClient.Views
             SetFieldLogin(connectionString?.Login);
             SetFieldPassword(String.Empty);
             if (GetDbService()?.PrimaryDbConfiguration?.IsSavePassword??false)
-                SetFieldPassword(connectionString?.Password?.GetValue());       
-            SetFieldIsSavePassword(configuration?.IsSavePassword??configuration.GetDefaultIsSavePassword());         
+                SetFieldPassword(connectionString?.Password?.GetValue());
+            SetFieldIsSavePassword(configuration?.IsSavePassword??(bool)configuration?.GetDefaultIsSavePassword());        
         }
 
         void SaveFormFields()

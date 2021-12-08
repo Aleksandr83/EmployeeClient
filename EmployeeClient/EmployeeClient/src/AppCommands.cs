@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Data.Models.Reffers;
-using EmployeeClient.Data.Repositories;
-using EmployeeClient.Services.DB;
+using alg.Data.Services.DB;
+using alg.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,9 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Services.Settings;
+using alg.Types;
+using alg.Types.Configuration;
 using EmployeeClient.Helpers;
 using EmployeeClient.Services.App;
-using EmployeeClient.Types.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;

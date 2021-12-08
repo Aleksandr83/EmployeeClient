@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Controls;
-using EmployeeClient.Types.Controls;
+using alg.Types.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;

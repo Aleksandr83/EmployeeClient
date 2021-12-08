@@ -1,12 +1,14 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Services;
+using alg.Services.Settings;
 using EmployeeClient.Controls;
 using EmployeeClient.Services.App;
 using EmployeeClient.Services.ColumnsConfiguration;
 using EmployeeClient.Services.Commands;
-using EmployeeClient.Services.DB;
 using EmployeeClient.Services.DockManager;
 using EmployeeClient.Services.Reffers;
 using EmployeeClient.Services.Settings;
+using EmployeeClient.src.Services.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,7 @@ namespace EmployeeClient.Services
                 return (IService)Activator.CreateInstance(typeof(SettingsService));
             if (typeof(T) == typeof(ICommandsService))
                 return (IService)Activator.CreateInstance(typeof(CommandsService));
-            if (typeof(T) == typeof(IDbService))
+            if (typeof(T) == typeof(alg.Data.Services.DB.IDbService))
                 return (IService)Activator.CreateInstance(typeof(DbService));
             if (typeof(T) == typeof(IReffersService))
                 return (IService)Activator.CreateInstance(typeof(ReffersService));

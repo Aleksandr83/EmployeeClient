@@ -1,5 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-using EmployeeClient.Types.Commands;
+using alg.Types.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
