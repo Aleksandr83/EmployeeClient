@@ -107,7 +107,8 @@ namespace EmployeeClient.Controls
             {
                 var content = GetContentTabPage(tabPage);
                 if (content != view) continue;
-                InsertPageInTabControl(tabControl, tabPage, 1);              
+                InsertPageInTabControl(tabControl, tabPage, 1);
+                content.Update();
                 deletedHidedItems.Add(tabPage);               
             }
             foreach (dynamic item in deletedHidedItems)                

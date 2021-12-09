@@ -42,8 +42,7 @@ namespace EmployeeClient.Controls
             InitializeComponent();
             ResourcesManagerHelper.UpdateControlsHeaders
                 (this, new Func<string, string>((x) => { return GetResourceString(x); }));
-            Init();
-            Update(); // temp
+            Init();            
         }
                 
         private void Init()

@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Types.Controls;
 using EmployeeClient.Services.Views;
 using EmployeeClient.Views.Interfaces;
 using System;
@@ -40,6 +41,18 @@ namespace EmployeeClient.Views
         public EmployeesListView()
         {
             InitializeComponent();            
+        }
+
+        private IUserControl GetEmployeeListFiltersControl()
+            => (IUserControl)this.employeeListFiltersControl1;
+
+        private IUserControl GetEmployeeDataGridControl()
+            => (IUserControl)this.employeeDataGridViewControl1;
+
+        public new void Update()
+        {
+            GetEmployeeListFiltersControl()?.Update();
+            GetEmployeeDataGridControl()?.Update();
         }
 
         #region PropertyChanged

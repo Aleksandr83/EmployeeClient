@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using alg.Services.Settings;
 using alg.Types;
+using alg.Types.Controls;
 using alg.Types.Controls.DataGrid;
 using alg.Types.Controls.DataGrid.Schema;
 using alg.Types.Generic;
@@ -22,7 +23,7 @@ using System.Windows.Forms;
 
 namespace EmployeeClient.Controls
 {
-    public partial class EmployeeDataGridViewControl : UserControl
+    public partial class EmployeeDataGridViewControl : UserControl, IUserControl
     {
         private int DEFAULT_TIMEOUT = 10000;
         private int MIN_TIMEOUT     = 1000;
@@ -41,8 +42,7 @@ namespace EmployeeClient.Controls
         public EmployeeDataGridViewControl()
         {
             InitializeComponent();
-            Init();
-            Update(); // temp           
+            Init();                     
         }
 
         private IDataGridControl GetDataGridControl() => this.dataGridViewControl1;

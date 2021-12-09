@@ -9,5 +9,6 @@ namespace alg.Types.Controls
 {
     public interface IUserControl
     {
+        void Update();
     }
 }
