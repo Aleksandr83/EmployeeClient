@@ -15,6 +15,7 @@ namespace EmployeeClient
         {
             (ServicesManager.GetService<IDbService>() as IDbService)?
                 .PrimaryDbConfiguration?.Save();
+            DbManager.Connected();
         }
 
     }

@@ -79,7 +79,13 @@ namespace EmployeeClient.Controls
             if (items != null)
             {
                 foreach (var item in items)
-                    source?.Add((T)item);
+                    if (!InvokeRequired)
+                        source?.Add((T)item);
+                    else
+                    {
+                        Invoke(new Action<IList<T>,T>((x,y) 
+                            => { x.Add(y); }), source, item);
+                    }
             }
         }
         private void LoadItemsInFilter<T>(IList<T> source) 

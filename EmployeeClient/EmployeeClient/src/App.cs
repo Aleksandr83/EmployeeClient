@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using alg.Types;
+using EmployeeClient.Views.Interfaces;
 
 namespace EmployeeClient
 {
@@ -25,11 +26,10 @@ namespace EmployeeClient
             RegisteringCommands();
             Reffers.Registration();
             Services.Views
-                .Views.Registration();                      
-            //DbManager.Disconnected();
-            DbManager.Connected(); // temp
+                .Views.Registration();
             AttachViewsInDockManager();
-            
+            DbManager.Disconnected();           
+
         }             
 
         private static void InitConfiguration()

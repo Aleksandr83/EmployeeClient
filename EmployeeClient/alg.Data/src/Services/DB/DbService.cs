@@ -14,8 +14,7 @@ namespace alg.Data.Services.DB
         public IDatabaseConfiguration PrimaryDbConfiguration { get; }
 
         public DbService()
-        {
-            //PrimaryDbConfiguration = (IDatabaseConfiguration)new MsSqlDatabaseConfiguration();
+        {            
             PrimaryDbConfiguration = CreatePrimaryDbConfiguration();
         }
 

@@ -25,7 +25,22 @@ namespace alg.Data.Repositories
             return (string.IsNullOrEmpty(connectionString))? 
                 new RepositoryContext<T>() : new RepositoryContext<T>(connectionString);
         }
-                
+
+        public virtual bool IsTestConnection()
+        {
+            try
+            {
+                using (var context = GetContext(GetConnectionString()))
+                {
+                    context.Database.Connection.Open();                   
+                    context.Database.Connection.Close();
+                    return true;
+                }
+            }
+            catch (Exception) { }
+            return false;
+        }
+
         public virtual IList<T> GetAll()
         {
             dynamic   requestResult = null;

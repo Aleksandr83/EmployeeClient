@@ -9,8 +9,10 @@ namespace EmployeeClient.Services.DockManager
 {
     internal interface IDockManager
     {
-        IView GetActiveView();
+        IView GetActiveView();      
         void  AddView(IView view);
-        
+        void  HideView(IView view);
+        void  ShowView(IView view);
+       
     }
 }

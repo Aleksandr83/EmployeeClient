@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using alg.Types;
+using EmployeeClient.Services.DockManager;
 
 namespace EmployeeClient
 {
@@ -23,13 +24,25 @@ namespace EmployeeClient
         public static void HideAll<T>() where T : IView
         {
             var views = GetAll<T>();
-            foreach (var view in views) view.Hide();
+            var dockManagerService = GetDockManagerService(); 
+            
+            foreach (var view in views)
+                dockManagerService.HideView(view);              
         }
 
         public static void ShowAll<T>() where T : IView
         {
-            var views = GetAll<T>();
-            foreach (var view in views) view.Show();
+            var views = GetAll<T>().Reverse();
+            var dockManagerService = GetDockManagerService();
+
+            foreach (var view in views)
+                dockManagerService.ShowView(view);            
+        }
+
+        private static IDockManagerService GetDockManagerService()
+        {
+            return (IDockManagerService)ServicesManager
+                .GetService<IDockManagerService>();            
         }
     }
 }

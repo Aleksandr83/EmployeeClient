@@ -16,7 +16,8 @@ namespace EmployeeClient.Controls
 {
     public partial class DockManagerControl : UserControl, IDockManagerService
     {
-        BindingList<IView> Views = new BindingList<IView>();
+        IList _HidesTabPages = new ArrayList();
+        BindingList<IView> Views { get; set; } = new BindingList<IView>();        
 
         public DockManagerControl()
         {
@@ -26,7 +27,7 @@ namespace EmployeeClient.Controls
         private TabControl  GetTabControl() => tabControl1;
         private TabPage     CreateTabPage() => new TabPage();
         private TabPage     GetActiveTabPage() => GetTabControl()?.SelectedTab;        
-
+        
         private IView GetContentTabPage(TabPage tabPage)
         {
             var controls = new ArrayList(tabPage?.Controls);
@@ -45,9 +46,20 @@ namespace EmployeeClient.Controls
             }
         }
 
-        private void InsertPageInTabControl(TabControl tabControl,TabPage tabPage)
+        private void InsertPageInTabControl
+            (TabControl tabControl,TabPage tabPage,int index = 0)
         {
-            tabControl?.Controls?.Add(tabPage);
+            if (index <= 0)
+                tabControl?.TabPages?.Add(tabPage);
+            else                           
+                tabControl?.TabPages?.Insert(index, tabPage);            
+              
+        }
+
+        private void RemovePageFromTabControl(TabPage tabPage)
+        {
+            var tabControl = GetTabControl();
+            tabControl?.Controls?.Remove(tabPage);
         }
 
         internal void AddView(IView view)
@@ -65,6 +77,42 @@ namespace EmployeeClient.Controls
         IView IDockManager.GetActiveView()
         {            
             return GetContentTabPage(GetActiveTabPage());
+        }       
+
+        private IList GetCachedHidedView() => _HidesTabPages;
+
+        private void CachedHidedView(dynamic tabPage)
+        {
+            GetCachedHidedView()?.Add(tabPage);           
+        }
+
+        public void HideView(IView view)
+        {           
+            var tabPages = new ArrayList(GetTabControl()?.TabPages);
+            foreach (dynamic tabPage in tabPages)
+            {
+                var content = GetContentTabPage(tabPage);
+                if (content != view) continue;
+                CachedHidedView(tabPage);
+                RemovePageFromTabControl(tabPage);
+            }
+        }
+        public void ShowView(IView view)
+        {            
+            var tabControl        = GetTabControl();
+            var deletedHidedItems = new ArrayList();
+            var hidedTabPages     = GetCachedHidedView();                      
+            
+            foreach (dynamic tabPage in hidedTabPages)
+            {
+                var content = GetContentTabPage(tabPage);
+                if (content != view) continue;
+                InsertPageInTabControl(tabControl, tabPage, 1);              
+                deletedHidedItems.Add(tabPage);               
+            }
+            foreach (dynamic item in deletedHidedItems)                
+                hidedTabPages.Remove(item);
+
         }
     }
 }

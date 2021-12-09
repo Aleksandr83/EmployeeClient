@@ -95,9 +95,15 @@ namespace EmployeeClient.Controls
                     lock (this)
                     {
                         Employees.Clear();
-                        var items = Repository?.GetAll();
+                        dynamic items = Repository?.GetAll();
                         foreach (var item in items ?? List.Empty<Employee>())
-                            Employees.Add(item);
+                            if (!InvokeRequired)
+                                Employees.Add(item);
+                            else
+                            {
+                                Invoke(new Action<IList<Employee>,Employee>((x,y)
+                                    => {x.Add(y); }), Employees, item);
+                            }
                     }
                 });
 

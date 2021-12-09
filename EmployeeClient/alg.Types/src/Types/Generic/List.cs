@@ -10,5 +10,6 @@ namespace alg.Types.Generic
     public class List
     {        
         public static IList<T> Empty<T>() => new List<T>();
+      
     }
 }

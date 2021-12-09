@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeClient.Services.Views
 {
-    internal interface INormalView:IView
+    internal interface INormalView : IView
     {
     }
 }

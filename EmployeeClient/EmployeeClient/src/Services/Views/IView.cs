@@ -11,9 +11,8 @@ namespace EmployeeClient.Services.Views
     public interface IView : IUserControl
     {
         String Header { get; }
-        void Hide();
-        void Show();
-        void Update();        
+        
+        void   Update();        
         
     }
 }
