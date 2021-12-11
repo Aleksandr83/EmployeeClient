@@ -77,10 +77,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\alg.Helpers\alg.Helpers.csproj">
-      <Project>{0c6c1ac9-2de5-4976-a8aa-8d41ac64b08a}</Project>
-      <Name>alg.Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\alg.Types\alg.Types.csproj">
       <Project>{1076b01a-57ee-4a17-89c7-2948d93bffcf}</Project>
       <Name>alg.Types</Name>

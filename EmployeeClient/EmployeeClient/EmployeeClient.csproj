@@ -192,7 +192,6 @@
     <Compile Include="src\Data\Types\DatabaseConfiguration.cs" />
     <Compile Include="src\Data\Types\MsSqlDatabaseConfiguration.cs" />
     <Compile Include="src\Services\ColumnsConfiguration\ColumnsConfigurationService.cs" />
-    <Compile Include="src\Services\ColumnsConfiguration\IColumnsConfigurationService.cs" />
     <Compile Include="src\Services\Commands\CommandsManager.cs" />
     <Compile Include="src\Configuration\SettingsNames.cs" />
     <Compile Include="src\Configuration\SettingsSections.cs" />
@@ -218,17 +217,53 @@
     <Compile Include="src\Views\Controls\DockManagerPresenter.Designer.cs">
       <DependentUpon>DockManagerPresenter.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\Controls\EmployeeDataGridViewControl.cs">
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeeDataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\Controls\EmployeeDataGridViewControl.Designer.cs">
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeeDataGridViewControl.Designer.cs">
       <DependentUpon>EmployeeDataGridViewControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\Controls\EmployeeListFiltersControl.cs">
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeeListFiltersControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\Controls\EmployeeListFiltersControl.Designer.cs">
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeeListFiltersControl.Designer.cs">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\HDataRangeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\HDataRangeControl.Designer.cs">
+      <DependentUpon>HDataRangeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\ReportSelectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\ReportSelectorControl.Designer.cs">
+      <DependentUpon>ReportSelectorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportControl.Designer.cs">
+      <DependentUpon>DefaultReportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportDataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportDataGridControl.Designer.cs">
+      <DependentUpon>DefaultReportDataGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportDetailsDataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportDetailsDataGridControl.Designer.cs">
+      <DependentUpon>DefaultReportDetailsDataGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportFiltersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportFiltersControl.Designer.cs">
+      <DependentUpon>DefaultReportFiltersControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\Controls\ToolBarControl.cs">
       <SubType>UserControl</SubType>
@@ -302,11 +337,29 @@
     <EmbeddedResource Include="src\Views\Controls\DockManagerPresenter.resx">
       <DependentUpon>DockManagerPresenter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\Controls\EmployeeDataGridViewControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\EmployeeList\EmployeeDataGridViewControl.resx">
       <DependentUpon>EmployeeDataGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\Controls\EmployeeListFiltersControl.resx">
+    <EmbeddedResource Include="src\Views\Controls\EmployeeList\EmployeeListFiltersControl.resx">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\HDataRangeControl.resx">
+      <DependentUpon>HDataRangeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\ReportSelectorControl.resx">
+      <DependentUpon>ReportSelectorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportControl.resx">
+      <DependentUpon>DefaultReportControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportDataGridControl.resx">
+      <DependentUpon>DefaultReportDataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportDetailsDataGridControl.resx">
+      <DependentUpon>DefaultReportDetailsDataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportFiltersControl.resx">
+      <DependentUpon>DefaultReportFiltersControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Controls\ToolBarControl.resx">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
@@ -335,7 +388,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="EmployeeClient.pfx" />
-    <EmbeddedResource Include="src\Configuration\zEmployeeListColumns.conf" />
+    <EmbeddedResource Include="src\Configuration\DataGridView\ColumnsConfiguration.conf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -364,15 +417,12 @@
       <Project>{58ea5046-4710-493b-8521-7a8ee7497603}</Project>
       <Name>alg.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\alg.Helpers\alg.Helpers.csproj">
-      <Project>{0c6c1ac9-2de5-4976-a8aa-8d41ac64b08a}</Project>
-      <Name>alg.Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\alg.Types\alg.Types.csproj">
       <Project>{1076b01a-57ee-4a17-89c7-2948d93bffcf}</Project>
       <Name>alg.Types</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

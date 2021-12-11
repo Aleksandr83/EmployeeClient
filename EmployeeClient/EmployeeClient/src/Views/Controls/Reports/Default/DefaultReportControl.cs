@@ -9,16 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EmployeeClient
+namespace EmployeeClient.Controls.Reports.Default
 {
-    public partial class MainForm : Form
+    public partial class DefaultReportControl : UserControl
     {
-       
-        public MainForm()
+        public DefaultReportControl()
         {
-            this.StartPosition = FormStartPosition.CenterScreen;
-            InitializeComponent();          
+            InitializeComponent();
         }
-        
     }
 }

@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Filters.Label.Departament" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="Filters.Label.LastName" xml:space="preserve">
-    <value>Фамилия</value>
-  </data>
-  <data name="Filters.Label.Post" xml:space="preserve">
-    <value>Должность</value>
-  </data>
-  <data name="Filters.Label.Status" xml:space="preserve">
-    <value>Статус</value>
-  </data>
 </root>

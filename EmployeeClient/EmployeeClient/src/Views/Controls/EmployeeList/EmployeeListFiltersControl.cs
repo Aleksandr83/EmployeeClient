@@ -40,8 +40,8 @@ namespace EmployeeClient.Controls
         public EmployeeListFiltersControl()
         {
             InitializeComponent();
-            ResourcesManagerHelper.UpdateControlsHeaders
-                (this, new Func<string, string>((x) => { return GetResourceString(x); }));
+            ResourcesManagerHelper<EmployeeListFiltersControl>
+                .UpdateControlsHeaders(this);            
             Init();            
         }
                 

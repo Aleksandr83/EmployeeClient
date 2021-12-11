@@ -33,6 +33,7 @@ namespace EmployeeClient.Views
 
         #region Header
         String _Header = GetResourceString("View.Header");
+        
 
         public String Header
         {
@@ -43,14 +44,8 @@ namespace EmployeeClient.Views
                 OnPropertyChanged("Header");
             }
         }
-        #endregion Header
-
-        #region ResourceManager
-        static readonly ResourceManager _ResourceManager = new ResourceManager(typeof(AboutProgramView));
-        static ResourceManager GetResourceManager() => _ResourceManager;
-        static String  GetResourceString(String name) => GetResourceManager().GetString(name);        
-        #endregion ResourceManager
-
+        #endregion Header      
+           
         public AboutProgramView()
         {
             InitializeComponent();
@@ -59,23 +54,19 @@ namespace EmployeeClient.Views
             SetToolTips();
         }
 
-        private void UpdateControlsHeaders()
-        {
-            ResourcesManagerHelper.UpdateControlsHeaders
-                (
-                    this,
-                    new Func<string, string>((x) => { return GetResourceString(x); }
-                ));
-        }
+        static String GetResourceString(String name) =>
+            ResourcesManagerHelper<AboutProgramView>.GetResourceString(name);
 
-        private void UpdateControlsValues()
-        {
-            ResourcesManagerHelper.UpdateControlsValues
-                (
-                    this,
-                    new Func<string, string>((x) => { return GetRequestInfoString(x); }
-                ));
-        }
+        private void UpdateControlsHeaders()       
+            => ResourcesManagerHelper<AboutProgramView>
+            .UpdateControlsHeaders(this);
+
+        private void UpdateControlsValues()          
+            => ResourcesManagerHelper<AboutProgramView>
+            .UpdateControlsValues(this, GetRequestInfoString);
+
+        private static IAppService GetAppService()
+            => (IAppService)ServicesManager.GetService<IAppService>();
 
         private void SetToolTips()
         {
@@ -88,12 +79,7 @@ namespace EmployeeClient.Views
             OpenConfigDirButtonToolTip.SetToolTip(OpenConfigFolderButton, toolTipText);
             toolTipText = GetResourceString("View.AboutProgram.ToolTips.OpenFileInNotepad");
             OpenConfigFileButtonToolTip.SetToolTip(OpenConfigFileButton, toolTipText);
-        }
-
-        private static IAppService GetAppService()
-        {
-            return (IAppService)ServicesManager.GetService<IAppService>();
-        }
+        }              
 
         private static String GetRequestInfoString(String cmd)
         {            

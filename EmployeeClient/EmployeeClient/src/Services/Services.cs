@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
 using alg.Data.Services.DB;
+using alg.Services;
 using alg.Services.Settings;
 using alg.Types;
 using EmployeeClient.Services.App;
-using EmployeeClient.Services.ColumnsConfiguration;
 using EmployeeClient.Services.Commands;
 using EmployeeClient.Services.DockManager;
 using EmployeeClient.Services.Reffers;

@@ -1,8 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
-//using EmployeeClient.Services.Views;
-using EmployeeClient.Controls;
 using alg.Types.Controls;
-using alg.Types.Generic;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,15 +11,13 @@ using System.Windows.Forms;
 
 namespace EmployeeClient.Helpers
 {
-    internal sealed class ResourcesManagerHelper
+    internal sealed class ResourcesManagerHelper<T> where T : class
     {
         const String RESOURCE_PREFIX_HEADERS = "%%";
         const String RESOURCE_PREFIX_VALUES  = "%!";
 
-        public enum TControlFieldProperty
-        {
-            Text
-        }
+        private static object LK = new object();
+        private static ResourcesControlInitializator<T> Resources { get; set; } = null;
 
         private static String GetFullResourceName
             (String resourceName, String resourcePath, Assembly assembly)
@@ -39,18 +34,32 @@ namespace EmployeeClient.Helpers
             if (assembly == null)
                 assembly = Assembly.GetExecutingAssembly();
             String fullResourceName = GetFullResourceName(resourceName, resourcePath, assembly);
-            return assembly?.GetManifestResourceNames().Contains(fullResourceName)??false;
+            return assembly?
+                .GetManifestResourceNames()
+                .Contains(fullResourceName) ?? false;
         }
 
         public static bool IsExistResource(String fullResourceName,Assembly assembly = null)
         {
             if (assembly == null)
                 assembly = Assembly.GetExecutingAssembly();
-            return assembly?.GetManifestResourceNames().Contains(fullResourceName) ?? false;
+            return assembly?
+                .GetManifestResourceNames()
+                .Contains(fullResourceName) ?? false;
         }
 
-        public static String ReadStringResource
-            (String resourceName, String resourcePath = "", Assembly assembly = null)
+        public static String GetResourceString(String resourceName)
+        {
+            lock (LK)
+            {
+                if (Resources == null)
+                    Resources = new ResourcesControlInitializator<T>();
+            }
+            return Resources.GetResourceString(resourceName);
+        }
+
+        public static String GetStringResource
+            (String resourceName, String resourcePath, Assembly assembly = null)
         {            
             if (assembly == null)
                 assembly = Assembly.GetExecutingAssembly();
@@ -65,6 +74,20 @@ namespace EmployeeClient.Helpers
             }            
         }
 
+        public static void UpdateControlsHeaders(IUserControl view)            
+        {
+            lock(LK)
+            {
+                if (Resources == null)
+                    Resources = new ResourcesControlInitializator<T>();
+            }            
+            UpdateControlsHeaders(view, new Func<string, string>((x) =>
+            { 
+                return Resources.GetResourceString(x); 
+            }));
+
+        }
+
         public static void UpdateControlsHeaders
             (
                 IUserControl view,
@@ -72,15 +95,18 @@ namespace EmployeeClient.Helpers
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
         {
-            UpdateControls
-                (
-                    view, 
-                    resourceReaderMethod, 
-                    RESOURCE_PREFIX_HEADERS, 
-                    fieldProperty
-                );
+            new Task(new Action(() => {
+                UpdateControls
+                    (
+                        view, 
+                        resourceReaderMethod, 
+                        RESOURCE_PREFIX_HEADERS, 
+                        fieldProperty
+                    );
+            })).Start();
         }
 
+        
         public static void UpdateControlsValues
             (
                 IUserControl view,
@@ -88,13 +114,15 @@ namespace EmployeeClient.Helpers
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
         {
-            UpdateControls
-                (
-                    view,
-                    resourceReaderMethod,
-                    RESOURCE_PREFIX_VALUES,
-                    fieldProperty
-                );
+            new Task(new Action(() => { 
+                UpdateControls
+                    (
+                        view,
+                        resourceReaderMethod,
+                        RESOURCE_PREFIX_VALUES,
+                        fieldProperty
+                    );
+            })).Start();
         }
 
         private static void UpdateControls
@@ -150,7 +178,11 @@ namespace EmployeeClient.Helpers
         {
             if (fieldProperty == TControlFieldProperty.Text)
             {
-                control.Text = value;
+                if (!control.InvokeRequired)
+                    control.Text = value;
+                else
+                    control.Invoke(new Action<Control, String>((x, y) 
+                        => { x.Text = y; }));
                 return;
             }
         }

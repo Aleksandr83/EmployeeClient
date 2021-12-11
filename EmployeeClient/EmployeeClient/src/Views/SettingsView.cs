@@ -30,39 +30,28 @@ namespace EmployeeClient.Views
                 OnPropertyChanged("Header");
             }
         }
-        #endregion Header
-
-        #region ResourceManager
-        static readonly ResourceManager _ResourceManager = new ResourceManager(typeof(SettingsView));
-        static ResourceManager GetResourceManager() => _ResourceManager;
-        static String GetResourceString(String name) => GetResourceManager()?.GetString(name);
-        #endregion ResourceManager
+        #endregion Header        
 
         public SettingsView()
         {
             InitializeComponent();
-            ResourcesManagerHelper.UpdateControlsHeaders(this, new Func<string, string>((x) => { return GetResourceString(x); }));
+            ResourcesManagerHelper<SettingsView>
+                .UpdateControlsHeaders(this);            
             SetToolTips();
             Update(); 
         }
 
-        private ISettingsService GetSettingsService()
-        {
-            return (ISettingsService)ServicesManager
-                .GetService<ISettingsService>();
-        }
+        static String GetResourceString(String name) =>
+            ResourcesManagerHelper<SettingsView>.GetResourceString(name);
 
-        private IDbService GetDbService()
-        {
-            return (IDbService)ServicesManager
-                .GetService<IDbService>();
-        }
+        private ISettingsService GetSettingsService()        
+            => (ISettingsService)ServicesManager.GetService<ISettingsService>();
 
-        private ICommandsService GetCommandsService()
-        {
-            return (ICommandsService)ServicesManager
-                .GetService<ICommandsService>();
-        }
+        private IDbService GetDbService()      
+            => (IDbService)ServicesManager.GetService<IDbService>();       
+
+        private ICommandsService GetCommandsService()        
+            => (ICommandsService)ServicesManager.GetService<ICommandsService>();
 
         public new void Update()
         {
@@ -116,34 +105,25 @@ namespace EmployeeClient.Views
         }
 
         String GetFieldServerName() => Field_ServerName.Text;
-        void SetFieldServerName(String serverName)
-        {
-            Field_ServerName.Text = serverName;
-        }
+        void   SetFieldServerName(String serverName)        
+            => Field_ServerName.Text = serverName;        
 
         String GetFieldDatabase() => Field_Database.Text;
-        void SetFieldDatabase(String database)
-        {
-            Field_Database.Text = database;
-        }
+        void   SetFieldDatabase(String database)       
+            => Field_Database.Text = database;        
 
         String GetFieldLogin() => Field_Login.Text;
-        void SetFieldLogin(String login)
-        {
-            Field_Login.Text = login;
-        }
+        void   SetFieldLogin(String login)        
+            => Field_Login.Text = login;        
 
         String GetFieldPassword() => Field_Password.Text;
-        void SetFieldPassword(String password)
-        {
-            Field_Password.Text = password;
-        }
+        void SetFieldPassword(String password)        
+            => Field_Password.Text = password;        
               
         bool GetFieldIsSavePassword() => Field_IsSavePassword.Checked;
-        void SetFieldIsSavePassword(bool value)
-        {
-            Field_IsSavePassword.Checked = value;
-        }
+        void SetFieldIsSavePassword(bool value)        
+            => Field_IsSavePassword.Checked = value;
+        
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -171,6 +151,6 @@ namespace EmployeeClient.Views
         private void ResetPasswordButton_Click(object sender, EventArgs e)
         {
             ResetPassword();          
-        }
+        }        
     }
 }
