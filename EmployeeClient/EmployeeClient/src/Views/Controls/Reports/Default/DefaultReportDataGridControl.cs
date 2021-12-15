@@ -13,20 +13,34 @@ namespace EmployeeClient.Controls.Reports.Default
 {
     public partial class DefaultReportDataGridControl : UserControl, IUserControl
     {
+        private bool IsInit { get; set; } = false;
 
-        private const String SCHEMA_NAME = "Report.Default";
+        private const String SCHEMA_NAME  = "Report.Default";
 
         //BindingList<>  Items = new BindingList<>();
 
         public DefaultReportDataGridControl()
         {
-            InitializeComponent();
-            new DataGridInitializator<DefaultReportDataGridControl>
-                (GetDataGridControl(), null, SCHEMA_NAME)
-                .Init();
+            InitializeComponent();           
         }
 
         private IDataGridControl GetDataGridControl() => this.dataGridViewControl1;
+
+        private void InitDataGridColumns()
+            => new DataGridInitializator<DefaultReportDataGridControl>
+                (GetDataGridControl(), null, SCHEMA_NAME)
+                .Init();
+
+        public new void Update()
+        {
+            base.Update();
+            if (!IsInit)
+            {
+                InitDataGridColumns();
+                IsInit = true;
+            }
+           
+        }
 
 
     }

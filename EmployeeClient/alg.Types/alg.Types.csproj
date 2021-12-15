@@ -160,6 +160,7 @@
     <Compile Include="src\Types\Controls\DataGrid\Schema\ColumnsSchema.cs" />
     <Compile Include="src\Types\Controls\IUserControl.cs" />
     <Compile Include="src\Types\Controls\TControlFieldProperty.cs" />
+    <Compile Include="src\Types\DataBindBroker.cs" />
     <Compile Include="src\Types\Data\IReffer.cs" />
     <Compile Include="src\Types\Data\IRepository.cs" />
     <Compile Include="src\Types\GenericManager.cs" />

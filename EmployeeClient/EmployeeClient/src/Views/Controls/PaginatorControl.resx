@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="%%DataRange.EndDate" xml:space="preserve">
-    <value>Конечная дата</value>
+  <data name="Paginator.Label.From" xml:space="preserve">
+    <value>из</value>
   </data>
-  <data name="%%DataRange.StartDate" xml:space="preserve">
-    <value>Начальная дата</value>
+  <data name="Paginator.Label.Page" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="Paginator.Label.RecordsOnPage" xml:space="preserve">
+    <value>Записей на странице</value>
   </data>
 </root>

@@ -16,18 +16,18 @@ namespace EmployeeClient.Controls.Reports.Default
 {
     public partial class DefaultReportDetailsDataGridControl : UserControl, IUserControl
     {
-        private const String SCHEMA_NAME = "Report.Details.Default";
+        private bool IsInit { get; set; } = false;
+
+        private const String SCHEMA_NAME  = "Report.Details.Default";
 
         //BindingList<>  Items = new BindingList<>();
 
         public DefaultReportDetailsDataGridControl()
         {
-            InitializeComponent();
-            UpdateControlsHeaders();
-            InitDataGridColumns();
+            InitializeComponent();            
         }
 
-        private void UpdateControlsHeaders()
+        private void InitControlsHeaders()
             => ResourcesManagerHelper<DefaultReportDetailsDataGridControl>
             .UpdateControlsHeaders(this);
 
@@ -37,5 +37,16 @@ namespace EmployeeClient.Controls.Reports.Default
                 .Init();
 
         private IDataGridControl GetDataGridControl() => this.dataGridViewControl1;
+
+        public new void Update()
+        {
+            base.Update();
+            if (!IsInit)
+            {
+                InitControlsHeaders();
+                InitDataGridColumns();
+                IsInit = true;
+            }            
+        }
     }
 }

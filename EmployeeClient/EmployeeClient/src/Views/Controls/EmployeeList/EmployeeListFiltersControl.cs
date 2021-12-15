@@ -41,12 +41,12 @@ namespace EmployeeClient.Controls
         {
             InitializeComponent();
             ResourcesManagerHelper<EmployeeListFiltersControl>
-                .UpdateControlsHeaders(this);            
+                .UpdateControlsHeaders(this);
             Init();            
         }
                 
         private void Init()
-        {
+        {            
             Field_Post.DataSource           = Posts;
             Field_Post.DisplayMember        = "Name";
             Field_Status.DataSource         = Statuses;

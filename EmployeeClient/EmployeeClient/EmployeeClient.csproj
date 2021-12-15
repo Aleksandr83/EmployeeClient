@@ -199,6 +199,7 @@
     <Compile Include="src\Services\Reffers\IReffersService.cs" />
     <Compile Include="src\Services\Reffers\ReffersService.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
+    <Compile Include="src\Types\DataBindBroker.cs" />
     <Compile Include="src\Views\Controls\DataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,11 +230,17 @@
     <Compile Include="src\Views\Controls\EmployeeList\EmployeeListFiltersControl.Designer.cs">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\Controls\HDataRangeControl.cs">
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeePaginatorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\Controls\HDataRangeControl.Designer.cs">
-      <DependentUpon>HDataRangeControl.cs</DependentUpon>
+    <Compile Include="src\Views\Controls\EmployeeList\EmployeePaginatorControl.Designer.cs">
+      <DependentUpon>EmployeePaginatorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\PaginatorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\PaginatorControl.Designer.cs">
+      <DependentUpon>PaginatorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\Controls\ReportSelectorControl.cs">
       <SubType>UserControl</SubType>
@@ -264,6 +271,12 @@
     </Compile>
     <Compile Include="src\Views\Controls\Reports\Default\DefaultReportFiltersControl.Designer.cs">
       <DependentUpon>DefaultReportFiltersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportPaginator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\Reports\Default\DefaultReportPaginator.Designer.cs">
+      <DependentUpon>DefaultReportPaginator.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\Controls\ToolBarControl.cs">
       <SubType>UserControl</SubType>
@@ -343,8 +356,11 @@
     <EmbeddedResource Include="src\Views\Controls\EmployeeList\EmployeeListFiltersControl.resx">
       <DependentUpon>EmployeeListFiltersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\Controls\HDataRangeControl.resx">
-      <DependentUpon>HDataRangeControl.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\Controls\EmployeeList\EmployeePaginatorControl.resx">
+      <DependentUpon>EmployeePaginatorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\PaginatorControl.resx">
+      <DependentUpon>PaginatorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Controls\ReportSelectorControl.resx">
       <DependentUpon>ReportSelectorControl.cs</DependentUpon>
@@ -360,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportFiltersControl.resx">
       <DependentUpon>DefaultReportFiltersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\Reports\Default\DefaultReportPaginator.resx">
+      <DependentUpon>DefaultReportPaginator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Controls\ToolBarControl.resx">
       <DependentUpon>ToolBarControl.cs</DependentUpon>
@@ -403,6 +422,8 @@
     <None Include="Assets\Icons\open_text_file_btn_16x16.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\next_btn.png" />
+    <Content Include="Assets\Icons\prev_btn.png" />
     <Content Include="sql\sp.sql" />
     <None Include="Assets\Icons\aurorenew_btn_32x32.png" />
     <Content Include="Assets\Icons\connection_img_16x16.png" />

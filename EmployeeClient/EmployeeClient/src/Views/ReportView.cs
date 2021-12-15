@@ -1,4 +1,5 @@
 ﻿// Copyright (c) 2021 Lukin Aleksandr
+using alg.Types.Controls;
 using EmployeeClient.Views.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ using System.Windows.Forms;
 
 namespace EmployeeClient.Views
 {
-    public partial class ReportView : UserControl, IReportView, INotifyPropertyChanged
+    public partial class ReportView 
+        : UserControl, IReportView, INotifyPropertyChanged
     {
         #region Header
         String _Header = GetResourceString("View.Header");
@@ -41,9 +43,12 @@ namespace EmployeeClient.Views
             InitializeComponent();
         }
 
+        private IUserControl GetReportControl()
+            => defaultReportControl1;
+
         public new void Update()
         {
-
+            GetReportControl()?.Update();           
         }
 
         #region PropertyChanged

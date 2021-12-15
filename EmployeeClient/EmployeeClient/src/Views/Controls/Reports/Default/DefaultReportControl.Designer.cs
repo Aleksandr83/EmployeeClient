@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.defaultReportFiltersControl1 = new EmployeeClient.Controls.Reports.Default.DefaultReportFiltersControl();
             this.defaultReportDataGridControl1 = new EmployeeClient.Controls.Reports.Default.DefaultReportDataGridControl();
             this.defaultReportDetailsDataGridControl1 = new EmployeeClient.Controls.Reports.Default.DefaultReportDetailsDataGridControl();
+            this.defaultReportFiltersControl1 = new EmployeeClient.Controls.Reports.Default.DefaultReportFiltersControl();
+            this.defaultReportPaginator1 = new EmployeeClient.Controls.Reports.Default.DefaultReportPaginator();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.defaultReportPaginator1);
             this.splitContainer1.Panel1.Controls.Add(this.defaultReportDataGridControl1);
             // 
             // splitContainer1.Panel2
@@ -55,14 +57,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(691, 327);
             this.splitContainer1.SplitterDistance = 213;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // defaultReportFiltersControl1
-            // 
-            this.defaultReportFiltersControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.defaultReportFiltersControl1.Location = new System.Drawing.Point(0, 0);
-            this.defaultReportFiltersControl1.Name = "defaultReportFiltersControl1";
-            this.defaultReportFiltersControl1.Size = new System.Drawing.Size(691, 89);
-            this.defaultReportFiltersControl1.TabIndex = 0;
             // 
             // defaultReportDataGridControl1
             // 
@@ -79,6 +73,22 @@
             this.defaultReportDetailsDataGridControl1.Name = "defaultReportDetailsDataGridControl1";
             this.defaultReportDetailsDataGridControl1.Size = new System.Drawing.Size(691, 110);
             this.defaultReportDetailsDataGridControl1.TabIndex = 0;
+            // 
+            // defaultReportFiltersControl1
+            // 
+            this.defaultReportFiltersControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.defaultReportFiltersControl1.Location = new System.Drawing.Point(0, 0);
+            this.defaultReportFiltersControl1.Name = "defaultReportFiltersControl1";
+            this.defaultReportFiltersControl1.Size = new System.Drawing.Size(691, 89);
+            this.defaultReportFiltersControl1.TabIndex = 0;
+            // 
+            // defaultReportPaginator1
+            // 
+            this.defaultReportPaginator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.defaultReportPaginator1.Location = new System.Drawing.Point(0, 176);
+            this.defaultReportPaginator1.Name = "defaultReportPaginator1";
+            this.defaultReportPaginator1.Size = new System.Drawing.Size(691, 37);
+            this.defaultReportPaginator1.TabIndex = 1;
             // 
             // DefaultReportControl
             // 
@@ -102,5 +112,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DefaultReportDataGridControl defaultReportDataGridControl1;
         private DefaultReportDetailsDataGridControl defaultReportDetailsDataGridControl1;
+        private DefaultReportPaginator defaultReportPaginator1;
     }
 }

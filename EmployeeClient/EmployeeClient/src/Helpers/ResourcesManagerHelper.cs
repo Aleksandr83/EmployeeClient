@@ -179,10 +179,10 @@ namespace EmployeeClient.Helpers
             if (fieldProperty == TControlFieldProperty.Text)
             {
                 if (!control.InvokeRequired)
-                    control.Text = value;
+                     control.Text = value;
                 else
-                    control.Invoke(new Action<Control, String>((x, y) 
-                        => { x.Text = y; }));
+                    control?.Invoke(new Action<Control, String>((x, y) 
+                        => { x.Text = y; }),control, value);
                 return;
             }
         }

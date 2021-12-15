@@ -25,20 +25,23 @@ namespace EmployeeClient.Controls
     {
         private int DEFAULT_TIMEOUT = 10000;
         private int MIN_TIMEOUT     = 1000;
+        private bool IsInit { get; set; } = false;
 
-        private const String SCHEMA_NAME = "EmployeeList";
+        private const String SCHEMA_NAME  = "EmployeeList";
 
-        BindingList<Employee> Employees  = new BindingList<Employee>();
-        EmployeeRepository    Repository = new EmployeeRepository();        
+        BindingList<Employee> Employees   = new BindingList<Employee>();
+        EmployeeRepository    Repository  = new EmployeeRepository();        
 
         public EmployeeDataGridViewControl()
         {
-            InitializeComponent();
-            new DataGridInitializator<EmployeeDataGridViewControl>
-                (GetDataGridControl(), Employees, SCHEMA_NAME)
-                .Init();
-                                            
+            InitializeComponent();                                     
         }
+
+
+        private void InitDataGridColumns()
+            => new DataGridInitializator<EmployeeDataGridViewControl>
+                (GetDataGridControl(), null, SCHEMA_NAME)
+                .Init();
 
         private IDataGridControl GetDataGridControl() => this.dataGridViewControl1;        
                 
@@ -66,13 +69,16 @@ namespace EmployeeClient.Controls
                         Employees.Clear();
                         dynamic items = Repository?.GetAll();
                         foreach (var item in items ?? List.Empty<Employee>())
+                        {
                             if (!InvokeRequired)
                                 Employees.Add(item);
                             else
                             {
                                 Invoke(new Action<IList<Employee>, Employee>((x, y)
-                                     => { x.Add(y); }), Employees, item);
+                                     =>
+                                { x.Add(y); }), Employees, item);
                             }
+                        }
                     }
                 });
 
@@ -87,6 +93,11 @@ namespace EmployeeClient.Controls
         public new void Update()
         {
             base.Update();
+            if (!IsInit)
+            {
+                InitDataGridColumns();
+                IsInit = true;
+            }
             EmployeeListUpdate();
         }
         #endregion Update        
