@@ -28,32 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.employeeStateFilterControl1 = new EmployeeClient.Controls.DataFiltres.EmployeeStateFilterControl();
+            this.dataFilterControl2 = new EmployeeClient.Controls.DataFiltres.DataFilterControl();
+            this.dataFilterControl1 = new EmployeeClient.Controls.DataFiltres.DataFilterControl();
+            this.statusFilterControl1 = new EmployeeClient.Controls.DataFiltres.StatusFilterControl();
             this.SuspendLayout();
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Фильтры";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(254, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(150, 16);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "%%DateRange.Header";
+            // 
+            // employeeStateFilterControl1
+            // 
+            this.employeeStateFilterControl1.Location = new System.Drawing.Point(550, 17);
+            this.employeeStateFilterControl1.Name = "employeeStateFilterControl1";
+            this.employeeStateFilterControl1.Size = new System.Drawing.Size(222, 60);
+            this.employeeStateFilterControl1.TabIndex = 16;
+            // 
+            // dataFilterControl2
+            // 
+            this.dataFilterControl2.Location = new System.Drawing.Point(390, 26);
+            this.dataFilterControl2.Name = "dataFilterControl2";
+            this.dataFilterControl2.Size = new System.Drawing.Size(143, 40);
+            this.dataFilterControl2.TabIndex = 15;
+            this.dataFilterControl2.Text = "%%DateRange.EndDate";
+            // 
+            // dataFilterControl1
+            // 
+            this.dataFilterControl1.Location = new System.Drawing.Point(257, 26);
+            this.dataFilterControl1.Name = "dataFilterControl1";
+            this.dataFilterControl1.Size = new System.Drawing.Size(143, 51);
+            this.dataFilterControl1.TabIndex = 14;
+            this.dataFilterControl1.Text = "%%DateRange.StartDate";
+            // 
+            // statusFilterControl1
+            // 
+            this.statusFilterControl1.Location = new System.Drawing.Point(12, 15);
+            this.statusFilterControl1.Name = "statusFilterControl1";
+            this.statusFilterControl1.Size = new System.Drawing.Size(219, 66);
+            this.statusFilterControl1.TabIndex = 12;
             // 
             // DefaultReportFiltersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.employeeStateFilterControl1);
+            this.Controls.Add(this.dataFilterControl2);
+            this.Controls.Add(this.dataFilterControl1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.statusFilterControl1);
             this.Name = "DefaultReportFiltersControl";
-            this.Size = new System.Drawing.Size(624, 131);
+            this.Size = new System.Drawing.Size(785, 87);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
+        private DataFiltres.StatusFilterControl statusFilterControl1;
+        private DataFiltres.EmployeeStateFilterControl employeeStateFilterControl1;
+        private DataFiltres.DataFilterControl dataFilterControl2;
+        private DataFiltres.DataFilterControl dataFilterControl1;
+        private System.Windows.Forms.Label label4;
     }
 }

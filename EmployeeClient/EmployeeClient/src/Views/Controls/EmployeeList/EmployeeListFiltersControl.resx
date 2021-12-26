@@ -127,6 +127,6 @@
     <value>Должность</value>
   </data>
   <data name="Filters.Label.Status" xml:space="preserve">
-    <value>HR Статус</value>
+    <value>Статус</value>
   </data>
 </root>

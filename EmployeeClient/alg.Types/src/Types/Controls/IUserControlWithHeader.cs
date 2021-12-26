@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace alg.Types.Controls
 {
-
-    public enum TControlFieldProperty
+    public interface IUserControlWithHeader<T> : IUserControl
     {
-        Text,
-        Header
+        T Header { get; set; }
     }
-
 }

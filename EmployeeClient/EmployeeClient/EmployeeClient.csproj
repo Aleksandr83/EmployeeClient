@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -200,6 +201,25 @@
     <Compile Include="src\Services\Reffers\ReffersService.cs" />
     <Compile Include="src\Services\Commands\ICommandsService.cs" />
     <Compile Include="src\Types\DataBindBroker.cs" />
+    <Compile Include="src\Types\DataFilter.cs" />
+    <Compile Include="src\Views\Controls\DataFilters\DataFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\DataFilters\DataFilterControl.Designer.cs">
+      <DependentUpon>DataFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\DataFilters\EmployeeStateFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\DataFilters\EmployeeStateFilterControl.Designer.cs">
+      <DependentUpon>EmployeeStateFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Controls\DataFilters\StatusFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Controls\DataFilters\StatusFilterControl.Designer.cs">
+      <DependentUpon>StatusFilterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Controls\DataGridViewControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -341,6 +361,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\Views\Controls\DataFilters\DataFilterControl.resx">
+      <DependentUpon>DataFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\DataFilters\EmployeeStateFilterControl.resx">
+      <DependentUpon>EmployeeStateFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Controls\DataFilters\StatusFilterControl.resx">
+      <DependentUpon>StatusFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Controls\DataGridViewControl.resx">
       <DependentUpon>DataGridViewControl.cs</DependentUpon>
     </EmbeddedResource>

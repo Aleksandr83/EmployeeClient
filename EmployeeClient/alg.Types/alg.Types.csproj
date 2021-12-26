@@ -153,8 +153,11 @@
     <Compile Include="src\Types\Configuration\SectionValue.cs" />
     <Compile Include="src\Types\Configuration\WritableJsonConfigurationProvider.cs" />
     <Compile Include="src\Types\Configuration\WritableJsonConfigurationSource.cs" />
+    <Compile Include="src\Types\Controls\DataFilter.cs" />
     <Compile Include="src\Types\Controls\DataGrid\DataGridInitializator.cs" />
     <Compile Include="src\Types\Controls\DataGrid\IDataGridControl.cs" />
+    <Compile Include="src\Types\Controls\IFilterControl.cs" />
+    <Compile Include="src\Types\Controls\IUserControlWithHeader.cs" />
     <Compile Include="src\Types\Controls\ResourcesControlInitializator.cs" />
     <Compile Include="src\Types\Controls\DataGrid\Schema\Column.cs" />
     <Compile Include="src\Types\Controls\DataGrid\Schema\ColumnsSchema.cs" />

@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DataFilter.Status" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="DateRange.EndDate" xml:space="preserve">
+    <value>по</value>
+  </data>
+  <data name="DateRange.Header" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="DateRange.StartDate" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="EmployeeState.Fired" xml:space="preserve">
+    <value>Уволенные с работы</value>
+  </data>
+  <data name="EmployeeState.Hired" xml:space="preserve">
+    <value>Принятые на работу</value>
+  </data>
 </root>

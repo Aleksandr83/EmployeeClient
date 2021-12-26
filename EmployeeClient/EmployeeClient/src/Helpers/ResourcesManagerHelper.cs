@@ -2,10 +2,12 @@
 using alg.Types.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -95,7 +97,7 @@ namespace EmployeeClient.Helpers
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
         {
-            new Task(new Action(() => {
+            var task = new Task(new Action(() => {
                 UpdateControls
                     (
                         view, 
@@ -103,7 +105,8 @@ namespace EmployeeClient.Helpers
                         RESOURCE_PREFIX_HEADERS, 
                         fieldProperty
                     );
-            })).Start();
+            }));
+            task.Start();            
         }
 
         
@@ -114,7 +117,7 @@ namespace EmployeeClient.Helpers
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
         {
-            new Task(new Action(() => { 
+            var task = new Task(new Action(() => { 
                 UpdateControls
                     (
                         view,
@@ -122,7 +125,8 @@ namespace EmployeeClient.Helpers
                         RESOURCE_PREFIX_VALUES,
                         fieldProperty
                     );
-            })).Start();
+            }));
+            task.Start();            
         }
 
         private static void UpdateControls
@@ -132,9 +136,9 @@ namespace EmployeeClient.Helpers
                 String prefix,
                 TControlFieldProperty fieldProperty = TControlFieldProperty.Text
             )
-        {
+        {   
             string s;
-            var stack = new Stack<Control>();
+            Stack<Control> stack = new Stack<Control>();
             var rootControls = (view as UserControl)?.Controls;
             if (rootControls == null) 
                 return;
@@ -146,7 +150,7 @@ namespace EmployeeClient.Helpers
                 s = GetControlFieldValue(control, fieldProperty);
                 if ((!String.IsNullOrEmpty(s))&&(s.StartsWith(prefix)))
                 {
-                    s = s.Substring(prefix.Length)?.Trim();
+                    s = s.Substring(prefix.Length)?.Trim();                   
                     s = resourceReaderMethod.Invoke(s);                    
                     SetControlFieldValue(control,s,fieldProperty);
                 }
@@ -154,8 +158,9 @@ namespace EmployeeClient.Helpers
                 if (childrens == null) 
                     continue;
                 foreach (var child in childrens)                
-                    stack?.Push((Control)child);               
+                    stack?.Push((Control)child);                
             }
+            
         }
 
         private static String GetControlFieldValue
